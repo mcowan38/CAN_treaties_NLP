@@ -1,4 +1,4 @@
-# CAN_Treaties_Replication
+# CAN_treaties_replication
 Replication Study for Spirling (2012) NLP analysis of treaties.
 
 ## Abstract:
