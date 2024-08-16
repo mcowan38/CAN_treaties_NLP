@@ -1,0 +1,950 @@
+---
+title: "01 EDA"
+author: 
+  - Patrick Reza Schnurbusch
+  - Mike Mcowan
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+abstract: "Our technical analysis regarding the treaties"
+output: 
+  html_document:
+    theme: flatly
+    code_folding: hide
+    toc: yes
+    toc_float:
+      collapsed: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r import_libraries, include=FALSE}
+install.packages("wordcloud2")
+install.packages("extrafont")
+install.packages("igraph")
+install.packages("plotly")
+install.packages("quanteda")
+install.packages("quanteda.textstats")
+install.packages("topicmodels")
+install.packages("wordcloud")
+        
+library(tm)
+library(kernlab)
+library(RPMG)
+library(tis)
+library(pastecs)
+library(strucchange)
+
+library(ggplot2)
+
+library(wordcloud2) # for word clouds 
+library(extrafont) # for system fonts 
+library(igraph) # for network analysis 
+
+
+library(plotly) # for graphing 
+library(dplyr) # for data manipulation 
+library(tidyr) # for pivot_wider() 
+
+
+library(quanteda) # for NLP  
+library(quanteda.textstats) # for readability score
+library(topicmodels) # for topic modelling
+library(wordcloud) # for word clouds 
+```
+
+
+```{r}
+# list for plotly margins 
+margin_list <- list(l = 100, r = 100, b = 100, t = 100, pad = 4)
+
+
+# tile font 
+title_font_list <- list(
+  family = "Raleway", 
+  size = 18, 
+  color = "black"
+)
+
+font_list <- list(
+  family = "Raleway", 
+  size = 12, 
+  color = "black"
+)
+```
+
+# Background
+
+This is a exploratory data analysis examining Prof. Spirling's findings from his 2012 Paper [U.S. Treaty Making with American Indians: Institutional Change and Relative Power, 1784–1911.](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1540-5907.2011.00558.x)
+
+Our goal is to first replicate his methodology, study his analysis, and then extend it to the Canadian context. After this is complete we will be positioned to begin performing comparative analysis between the two data sets.
+
+The data we will be examining are the treaties (and manifests) for US Treaty-making with American Indians (AJPS), can be found in our `00_data` folder inside `original_treaties_usa`.
+
+Note that they are divided into 4 groups as per the original paper describes:
+
+1.  *Valid and Operable (VCUT)*
+
+2.  *Ratified agreements (ACUT)*
+
+3.  *Rejected (RCUT)*
+
+4.  *Unratified (UCUT).*
+
+A description of this data is found in `UniverseCases.csv`
+
+The relevant data for the Indian Wars (as per Section 5.1) is found in `IndianWars.csv`
+
+Below we will import the various datasets into our session, code folding is hidden by default by clicking on `code` or `show` will flip out the code for closer inspection.
+
+We will be repeating the same methods in this analysis across all categories. 
+
+TF-IDF (Term Frequency-Inverse Document Frequency), is a scoring method to determine how important a word is to the total document. We use this to weigh words that we find with higher significance based on how frequently they appear across our entire document corpus. We can use this to adjust for words that appear more frequently in general. 
+
+# Valid and Operable (VCUT) {.tabset .tabset-fade .tabset-pills}
+
+```{r}
+document_cat <- "Valid & Operable"
+```
+
+
+365 documents compose our valid/operable category.
+
+```{r}
+# Valid and Operable (VCUT)
+valid_operable <- tm::Corpus(
+  x = tm::DirSource("./00_data/original_treaties_USA/justdocsVCUT/"),
+  readerControl = list(
+    reader = readPlain,
+    language = "en",
+    load = FALSE
+  )
+)
+
+valid_operable
+```
+
+```{r}
+# First, preprocess the data: remove common stop words, punctuation, and convert to lowercase
+corpus <- valid_operable
+corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, removeWords, stopwords("english"))
+
+# Create a term-document matrix
+tdm <- TermDocumentMatrix(corpus)
+
+# Convert the matrix to a data frame suitable for plotting
+m <- as.matrix(tdm)
+word_freqs <- sort(rowSums(m), decreasing = TRUE)
+df <- data.frame(word = names(word_freqs), freq = word_freqs)
+```
+
+
+## Text Statistics 
+
+```{r}
+top_words <- df %>% dplyr::arrange(desc(freq)) %>% dplyr::slice_head(n = 50)
+
+# order bars 
+top_words$word <- factor(top_words$word,
+                                      levels = unique(top_words$word)[order(top_words$freq, decreasing = F)])
+
+plot_ly(data = top_words, y = ~word, x = ~freq, 
+        type = 'bar', 
+        hoverinfo = "text", 
+        textposition = "auto", 
+        hovertext = ~paste0("<b>",word,"</b>","<br>", 
+                            "Freq: ", format(freq, big.mark = ",")),
+        marker = list(color = '#2C3E50')) %>% 
+  layout(title = list(
+    text = paste0(
+      "<b>",
+      document_cat,
+      " - Word Frequency",
+      "</b>",
+      "<br>",
+      "Top 50 Words"
+    ),
+    font = title_font_list
+  ), 
+    xaxis = list(title = 'Word Frequency'), # Ensuring terms are treated as categorical data
+    yaxis = list(title = '', type = 'category'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "y unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+```
+
+## TF-IDF
+
+```{r}
+# Assuming you have multiple documents in your corpus
+tfidf <- weightTfIdf(tdm)
+tfidf_matrix <- as.matrix(tfidf)
+# Find the highest values by row
+top_tfidf <- apply(tfidf_matrix, 1, max)
+
+# Create a data frame for plotting
+tfidf_df <- data.frame(term = names(top_tfidf), score = top_tfidf)
+tfidf_df <- tfidf_df[order(tfidf_df$score, decreasing = TRUE), ]
+```
+
+```{r}
+top_tf_idf <- tfidf_df %>% 
+  dplyr::arrange(desc(score)) %>% 
+  dplyr::slice_head(n = 50)
+
+# order bars 
+top_tf_idf$term <- factor(top_tf_idf$term,
+                          levels = unique(top_tf_idf$term)[order(top_tf_idf$score, decreasing = F)])
+
+# Define a custom color scale and reverse it
+custom_scale <- list(c(0, "#ef476f"), c(0.5, "#ffd166"), c(1, "#06d6a0"))
+
+plot_ly(data = top_tf_idf, y = ~term, x = ~score, 
+        type = 'bar', 
+        hoverinfo = "text", 
+        textposition = "auto", 
+        hovertext = ~paste0("<b>",term,"</b>","<br>
+                            Top 50 Words", 
+                            "Score: ", round(score, digits = 2)),
+        marker = list(color = ~score, 
+                      colorbar = list(title = "TF-IDF<br>Score"), 
+                      colorscale = custom_scale)) %>% 
+  layout(title = list(
+    text = paste0(
+      "<b>",
+      document_cat,
+      " - TF-IDF Scores",
+      "</b>",
+      "<br>",
+      "Top 50 Words"
+    ),
+    font = title_font_list
+  ), 
+    xaxis = list(title = "TF-IDF Score"), # Ensuring terms are treated as categorical data
+    yaxis = list(title = '', type = 'category'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "y unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+``` 
+
+
+## Wordcloud 
+
+```{r}
+# Plot the word cloud
+wordcloud(
+  words = df$word,
+  freq = df$freq,
+  min.freq = 500, # increasing min.freq to exclude more less frequent words 
+  scale = c(2, 0.5), #adjusting scale param to affect the size ratio between most/least frequent words, helps fit more words 
+  
+  colors = brewer.pal(8, "Dark2")
+)
+
+# wordcloud2(df,color = "random-light" )
+```
+
+## Text Complexity 
+
+```{r}
+corpus_text <- corpus(valid_operable)
+
+readability_indexs <- c(
+  "Flesch",
+  "Flesch.Kincaid",
+  "ARI",
+  "Coleman",
+  "Coleman.Liau.ECP",
+  "Coleman.Liau.grade",
+  "Coleman.Liau.short",
+  "RIX",
+  "SMOG",
+  "meanSentenceLength",
+  "meanWordSyllables",
+  "FOG.NRI"
+)
+
+readability_results <- textstat_readability(
+  corpus_text, 
+  measure = readability_indexs)
+
+# Convert to long format for plotting 
+readability_results_plot <- readability_results %>% 
+  tidyr::pivot_longer(cols = c(Flesch:SMOG, FOG.NRI), values_to = "Score", names_to = "Metric") %>% 
+  dplyr::select(document, Metric, Score, meanSentenceLength, meanWordSyllables)
+
+# Plot Scores 
+
+plot_ly(data = readability_results_plot, x = ~Metric, y = ~Score, 
+        type = 'box',
+        color = I("#F39C12")) %>% 
+  layout(
+    title = list(
+      text = paste0("<b>", document_cat, "</b><br>Readabilty Scores", "</b>"),
+      font = title_font_list
+    ),
+    xaxis = list(title = 'Word Frequency', type = 'category'), # Ensuring terms are treated as categorical data
+    yaxis = list(title = 'Score'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "x unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+```
+
+## Topic Model 
+
+```{r}
+dfm_valid_operable <- tokens(corpus_text, remove_punct = TRUE, remove_numbers = TRUE) %>%
+  tokens_remove(stopwords("en")) %>%
+  dfm() %>%
+  dfm_trim(min_termfreq = 4, max_docfreq = 10)
+
+# fit LDA model 
+LDA_fit_20 <- quanteda::convert(dfm_valid_operable, to = "topicmodels") |> 
+  LDA(k = 20)
+
+# Print Topic Models
+get_terms(LDA_fit_20, 5)
+```
+
+# Ratified agreements (ACUT) {.tabset .tabset-fade .tabset-pills}
+
+```{r}
+document_cat <- "Ratified Agreements"
+```
+
+```{r}
+# Valid and Operable (VCUT)
+ratified <- tm::Corpus(
+  x = tm::DirSource("./00_data/original_treaties_USA/justdocsACUT/"),
+  readerControl = list(
+    reader = readPlain,
+    language = "en",
+    load = FALSE
+  )
+)
+
+ratified
+```
+
+```{r}
+# First, preprocess the data: remove common stop words, punctuation, and convert to lowercase
+corpus <- ratified
+corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, removeWords, stopwords("english"))
+
+# Create a term-document matrix
+tdm <- TermDocumentMatrix(corpus)
+
+# Convert the matrix to a data frame suitable for plotting
+m <- as.matrix(tdm)
+word_freqs <- sort(rowSums(m), decreasing = TRUE)
+df <- data.frame(word = names(word_freqs), freq = word_freqs)
+```
+
+
+## Text Statistics 
+
+```{r}
+top_words <- df %>% dplyr::arrange(desc(freq)) %>% dplyr::slice_head(n = 50)
+
+# order bars 
+top_words$word <- factor(top_words$word,
+                                      levels = unique(top_words$word)[order(top_words$freq, decreasing = F)])
+
+plot_ly(data = top_words, y = ~word, x = ~freq, 
+        type = 'bar', 
+        hoverinfo = "text", 
+        textposition = "auto", 
+        hovertext = ~paste0("<b>",word,"</b>","<br>", 
+                            "Freq: ", format(freq, big.mark = ",")),
+        marker = list(color = '#2C3E50')) %>% 
+  layout(
+    title = list(
+      text = paste0("<b>", document_cat, " - Word Frequency", "</b>", "<br>", 
+                    "Top 50 Words"),
+      font = title_font_list
+    ),
+    xaxis = list(title = 'Word Frequency'), # Ensuring terms are treated as categorical data
+    yaxis = list(title = '', type = 'category'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "y unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+```
+
+## TF-IDF
+
+```{r}
+# Assuming you have multiple documents in your corpus
+tfidf <- weightTfIdf(tdm)
+tfidf_matrix <- as.matrix(tfidf)
+# Find the highest values by row
+top_tfidf <- apply(tfidf_matrix, 1, max)
+
+# Create a data frame for plotting
+tfidf_df <- data.frame(term = names(top_tfidf), score = top_tfidf)
+tfidf_df <- tfidf_df[order(tfidf_df$score, decreasing = TRUE), ]
+```
+
+```{r}
+top_tf_idf <- tfidf_df %>% 
+  dplyr::arrange(desc(score)) %>% 
+  dplyr::slice_head(n = 50)
+
+# order bars 
+top_tf_idf$term <- factor(top_tf_idf$term,
+                          levels = unique(top_tf_idf$term)[order(top_tf_idf$score, decreasing = F)])
+
+# Define a custom color scale and reverse it
+custom_scale <- list(c(0, "#ef476f"), c(0.5, "#ffd166"), c(1, "#06d6a0"))
+
+plot_ly(data = top_tf_idf, y = ~term, x = ~score, 
+        type = 'bar', 
+        hoverinfo = "text", 
+        textposition = "auto", 
+        hovertext = ~paste0("<b>",term,"</b>","<br>
+                            Top 50 Words", 
+                            "Score: ", round(score, digits = 2)),
+        marker = list(color = ~score, 
+                      colorbar = list(title = "TF-IDF<br>Score"), 
+                      colorscale = custom_scale)) %>% 
+  layout(title = list(
+    text = paste0(
+      "<b>",
+      document_cat,
+      " - TF-IDF Scores",
+      "</b>",
+      "<br>",
+      "Top 50 Words"
+    ),
+    font = title_font_list
+  ), 
+    xaxis = list(title = "TF-IDF Score"), # Ensuring terms are treated as categorical data
+    yaxis = list(title = '', type = 'category'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "y unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+``` 
+
+
+## Wordcloud 
+
+```{r}
+# Plot the word cloud
+wordcloud(
+  words = df$word,
+  freq = df$freq,
+  min.freq = 200, # increasing min.freq to exclude more less frequent words 
+  scale = c(2, 0.5), #adjusting scale param to affect the size ratio between most/least frequent words, helps fit more words 
+  
+  colors = brewer.pal(8, "Dark2")
+)
+
+# wordcloud2(df,color = "random-light" )
+```
+
+## Text Complexity 
+
+```{r}
+corpus_text <- corpus(valid_operable)
+
+readability_indexs <- c(
+  "Flesch",
+  "Flesch.Kincaid",
+  "ARI",
+  "Coleman",
+  "Coleman.Liau.ECP",
+  "Coleman.Liau.grade",
+  "Coleman.Liau.short",
+  "RIX",
+  "SMOG",
+  "meanSentenceLength",
+  "meanWordSyllables",
+  "FOG.NRI"
+)
+
+readability_results <- textstat_readability(
+  corpus_text, 
+  measure = readability_indexs)
+
+# Convert to long format for plotting 
+readability_results_plot <- readability_results %>% 
+  tidyr::pivot_longer(cols = c(Flesch:SMOG, FOG.NRI), values_to = "Score", names_to = "Metric") %>% 
+  dplyr::select(document, Metric, Score, meanSentenceLength, meanWordSyllables)
+
+# Plot Scores 
+
+plot_ly(data = readability_results_plot, x = ~Metric, y = ~Score, 
+        type = 'box',
+        color = I("#F39C12")) %>% 
+  layout(
+    title = list(
+      text = paste0("<b>", document_cat, "</b><br>Readabilty Scores", "</b>"),
+      font = title_font_list
+    ),
+    xaxis = list(title = 'Word Frequency', type = 'category'), # Ensuring terms are treated as categorical data
+    yaxis = list(title = 'Score'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "x unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+```
+
+## Topic Model 
+
+```{r}
+dfm_ratified <- tokens(corpus_text, remove_punct = TRUE, remove_numbers = TRUE) %>%
+  tokens_remove(stopwords("en")) %>%
+  dfm() %>%
+  dfm_trim(min_termfreq = 4, max_docfreq = 10)
+
+# fit LDA model 
+LDA_fit_20 <- quanteda::convert(dfm_ratified, to = "topicmodels") |> 
+  LDA(k = 20)
+
+# Print Topic Models
+get_terms(LDA_fit_20, 5)
+```
+
+# Rejected (RCUT) {.tabset .tabset-fade .tabset-pills}
+
+```{r}
+document_cat <- "Rejected Agreements"
+```
+
+```{r}
+# Valid and Operable (VCUT)
+rejected <- tm::Corpus(
+  x = tm::DirSource("./00_data/original_treaties_USA/justdocsRCUT/"),
+  readerControl = list(
+    reader = readPlain,
+    language = "en",
+    load = FALSE
+  )
+)
+
+rejected
+```
+
+```{r}
+# First, preprocess the data: remove common stop words, punctuation, and convert to lowercase
+corpus <- rejected
+corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, removeWords, stopwords("english"))
+
+# Create a term-document matrix
+tdm <- TermDocumentMatrix(corpus)
+
+# Convert the matrix to a data frame suitable for plotting
+m <- as.matrix(tdm)
+word_freqs <- sort(rowSums(m), decreasing = TRUE)
+df <- data.frame(word = names(word_freqs), freq = word_freqs)
+```
+
+
+## Text Statistics 
+
+```{r}
+top_words <- df %>% dplyr::arrange(desc(freq)) %>% dplyr::slice_head(n = 50)
+
+# order bars 
+top_words$word <- factor(top_words$word,
+                                      levels = unique(top_words$word)[order(top_words$freq, decreasing = F)])
+
+plot_ly(data = top_words, y = ~word, x = ~freq, 
+        type = 'bar', 
+        hoverinfo = "text", 
+        textposition = "auto", 
+        hovertext = ~paste0("<b>",word,"</b>","<br>", 
+                            "Freq: ", format(freq, big.mark = ",")),
+        marker = list(color = '#2C3E50')) %>% 
+  layout(
+    title = list(
+      text = paste0("<b>", document_cat, " - Word Frequency", "</b>", "<br>", 
+                    "Top 50 Words"),
+      font = title_font_list
+    ),
+    xaxis = list(title = 'Word Frequency'), # Ensuring terms are treated as categorical data
+    yaxis = list(title = '', type = 'category'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "y unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+```
+
+## TF-IDF
+
+```{r}
+# Assuming you have multiple documents in your corpus
+tfidf <- weightTfIdf(tdm)
+tfidf_matrix <- as.matrix(tfidf)
+# Find the highest values by row
+top_tfidf <- apply(tfidf_matrix, 1, max)
+
+# Create a data frame for plotting
+tfidf_df <- data.frame(term = names(top_tfidf), score = top_tfidf)
+tfidf_df <- tfidf_df[order(tfidf_df$score, decreasing = TRUE), ]
+```
+
+```{r}
+top_tf_idf <- tfidf_df %>% 
+  dplyr::arrange(desc(score)) %>% 
+  dplyr::slice_head(n = 50)
+
+# order bars 
+top_tf_idf$term <- factor(top_tf_idf$term,
+                          levels = unique(top_tf_idf$term)[order(top_tf_idf$score, decreasing = F)])
+
+# Define a custom color scale and reverse it
+custom_scale <- list(c(0, "#ef476f"), c(0.5, "#ffd166"), c(1, "#06d6a0"))
+
+plot_ly(data = top_tf_idf, y = ~term, x = ~score, 
+        type = 'bar', 
+        hoverinfo = "text", 
+        textposition = "auto", 
+        hovertext = ~paste0("<b>",term,"</b>","<br>
+                            Top 50 Words", 
+                            "Score: ", round(score, digits = 2)),
+        marker = list(color = ~score, 
+                      colorbar = list(title = "TF-IDF<br>Score"), 
+                      colorscale = custom_scale)) %>% 
+  layout(title = list(
+    text = paste0(
+      "<b>",
+      document_cat,
+      " - TF-IDF Scores",
+      "</b>",
+      "<br>",
+      "Top 50 Words"
+    ),
+    font = title_font_list
+  ), 
+    xaxis = list(title = "TF-IDF Score"), # Ensuring terms are treated as categorical data
+    yaxis = list(title = '', type = 'category'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "y unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+``` 
+
+
+## Wordcloud 
+
+```{r}
+# Plot the word cloud
+wordcloud(
+  words = df$word,
+  freq = df$freq,
+  min.freq = 200, # increasing min.freq to exclude more less frequent words 
+  scale = c(2, 0.5), #adjusting scale param to affect the size ratio between most/least frequent words, helps fit more words 
+  
+  colors = brewer.pal(8, "Dark2")
+)
+
+# wordcloud2(df,color = "random-light" )
+```
+
+## Text Complexity 
+
+```{r}
+corpus_text <- corpus(valid_operable)
+
+readability_indexs <- c(
+  "Flesch",
+  "Flesch.Kincaid",
+  "ARI",
+  "Coleman",
+  "Coleman.Liau.ECP",
+  "Coleman.Liau.grade",
+  "Coleman.Liau.short",
+  "RIX",
+  "SMOG",
+  "meanSentenceLength",
+  "meanWordSyllables",
+  "FOG.NRI"
+)
+
+readability_results <- textstat_readability(
+  corpus_text, 
+  measure = readability_indexs)
+
+# Convert to long format for plotting 
+readability_results_plot <- readability_results %>% 
+  tidyr::pivot_longer(cols = c(Flesch:SMOG, FOG.NRI), values_to = "Score", names_to = "Metric") %>% 
+  dplyr::select(document, Metric, Score, meanSentenceLength, meanWordSyllables)
+
+# Plot Scores 
+
+plot_ly(data = readability_results_plot, x = ~Metric, y = ~Score, 
+        type = 'box',
+        color = I("#F39C12")) %>% 
+  layout(
+    title = list(
+      text = paste0("<b>", document_cat, "</b><br>Readabilty Scores", "</b>"),
+      font = title_font_list
+    ),
+    xaxis = list(title = 'Word Frequency', type = 'category'), # Ensuring terms are treated as categorical data
+    yaxis = list(title = 'Score'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "x unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+```
+
+## Topic Model 
+
+```{r}
+dfm_rejected <- tokens(corpus_text, remove_punct = TRUE, remove_numbers = TRUE) %>%
+  tokens_remove(stopwords("en")) %>%
+  dfm() %>%
+  dfm_trim(min_termfreq = 4, max_docfreq = 10)
+
+# fit LDA model 
+LDA_fit_20 <- quanteda::convert(dfm_rejected, to = "topicmodels") |> 
+  LDA(k = 20)
+
+# Print Topic Models
+get_terms(LDA_fit_20, 5)
+```
+
+# Unratified (UCUT) {.tabset .tabset-fade .tabset-pills}
+
+```{r}
+document_cat <- "Unratified Agreements"
+```
+
+```{r}
+# Valid and Operable (VCUT)
+unratified <- tm::Corpus(
+  x = tm::DirSource("./00_data/original_treaties_USA/justdocsUCUT/"),
+  readerControl = list(
+    reader = readPlain,
+    language = "en",
+    load = FALSE
+  )
+)
+
+unratified
+```
+
+```{r}
+# First, preprocess the data: remove common stop words, punctuation, and convert to lowercase
+corpus <- unratified
+corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, removeWords, stopwords("english"))
+
+# Create a term-document matrix
+tdm <- TermDocumentMatrix(corpus)
+
+# Convert the matrix to a data frame suitable for plotting
+m <- as.matrix(tdm)
+word_freqs <- sort(rowSums(m), decreasing = TRUE)
+df <- data.frame(word = names(word_freqs), freq = word_freqs)
+```
+
+
+## Text Statistics 
+
+```{r}
+top_words <- df %>% dplyr::arrange(desc(freq)) %>% dplyr::slice_head(n = 50)
+
+# order bars 
+top_words$word <- factor(top_words$word,
+                                      levels = unique(top_words$word)[order(top_words$freq, decreasing = F)])
+
+plot_ly(data = top_words, y = ~word, x = ~freq, 
+        type = 'bar', 
+        hoverinfo = "text", 
+        textposition = "auto", 
+        hovertext = ~paste0("<b>",word,"</b>","<br>", 
+                            "Freq: ", format(freq, big.mark = ",")),
+        marker = list(color = '#2C3E50')) %>% 
+  layout(
+    title = list(
+      text = paste0("<b>", document_cat, " - Word Frequency", "</b>", "<br>", 
+                    "Top 50 Words"),
+      font = title_font_list
+    ),
+    xaxis = list(title = 'Word Frequency'), # Ensuring terms are treated as categorical data
+    yaxis = list(title = '', type = 'category'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "y unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+```
+
+## TF-IDF
+
+```{r}
+# Assuming you have multiple documents in your corpus
+tfidf <- weightTfIdf(tdm)
+tfidf_matrix <- as.matrix(tfidf)
+# Find the highest values by row
+top_tfidf <- apply(tfidf_matrix, 1, max)
+
+# Create a data frame for plotting
+tfidf_df <- data.frame(term = names(top_tfidf), score = top_tfidf)
+tfidf_df <- tfidf_df[order(tfidf_df$score, decreasing = TRUE), ]
+```
+
+```{r}
+top_tf_idf <- tfidf_df %>% 
+  dplyr::arrange(desc(score)) %>% 
+  dplyr::slice_head(n = 50)
+
+# order bars 
+top_tf_idf$term <- factor(top_tf_idf$term,
+                          levels = unique(top_tf_idf$term)[order(top_tf_idf$score, decreasing = F)])
+
+# Define a custom color scale and reverse it
+custom_scale <- list(c(0, "#ef476f"), c(0.5, "#ffd166"), c(1, "#06d6a0"))
+
+plot_ly(data = top_tf_idf, y = ~term, x = ~score, 
+        type = 'bar', 
+        hoverinfo = "text", 
+        textposition = "auto", 
+        hovertext = ~paste0("<b>",term,"</b>","<br>
+                            Top 50 Words", 
+                            "Score: ", round(score, digits = 2)),
+        marker = list(color = ~score, 
+                      colorbar = list(title = "TF-IDF<br>Score"), 
+                      colorscale = custom_scale)) %>% 
+  layout(title = list(
+    text = paste0(
+      "<b>",
+      document_cat,
+      " - TF-IDF Scores",
+      "</b>",
+      "<br>",
+      "Top 50 Words"
+    ),
+    font = title_font_list
+  ), 
+    xaxis = list(title = "TF-IDF Score"), # Ensuring terms are treated as categorical data
+    yaxis = list(title = '', type = 'category'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "y unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+``` 
+
+
+## Wordcloud 
+
+```{r}
+# Plot the word cloud
+wordcloud(
+  words = df$word,
+  freq = df$freq,
+  min.freq = 200, # increasing min.freq to exclude more less frequent words 
+  scale = c(2, 0.5), #adjusting scale param to affect the size ratio between most/least frequent words, helps fit more words 
+  
+  colors = brewer.pal(8, "Dark2")
+)
+
+# wordcloud2(df,color = "random-light" )
+```
+
+## Text Complexity 
+
+```{r}
+corpus_text <- corpus(valid_operable)
+
+readability_indexs <- c(
+  "Flesch",
+  "Flesch.Kincaid",
+  "ARI",
+  "Coleman",
+  "Coleman.Liau.ECP",
+  "Coleman.Liau.grade",
+  "Coleman.Liau.short",
+  "RIX",
+  "SMOG",
+  "meanSentenceLength",
+  "meanWordSyllables",
+  "FOG.NRI"
+)
+
+readability_results <- textstat_readability(
+  corpus_text, 
+  measure = readability_indexs)
+
+# Convert to long format for plotting 
+readability_results_plot <- readability_results %>%
+  tidyr::pivot_longer(
+    cols = c(Flesch:SMOG, FOG.NRI),
+    values_to = "Score",
+    names_to = "Metric"
+  ) %>%
+  dplyr::select(document, Metric, Score, meanSentenceLength, meanWordSyllables)
+
+# Plot Scores 
+
+plot_ly(data = readability_results_plot, x = ~Metric, y = ~Score, 
+        type = 'box',
+        color = I("#F39C12")) %>% 
+  layout(
+    title = list(
+      text = paste0("<b>", document_cat, "</b><br>Readabilty Scores", "</b>"),
+      font = title_font_list
+    ),
+    xaxis = list(title = 'Word Frequency', type = 'category'), # Ensuring terms are treated as categorical data
+    yaxis = list(title = 'Score'),
+    font = font_list, 
+    margin = margin_list,
+    barmode = 'stack',
+    hovermode = "x unified"
+  ) %>% 
+  config(displaylogo = FALSE)
+```
+
+## Topic Model 
+
+```{r}
+dfm_unratified <- tokens(corpus_text, remove_punct = TRUE, remove_numbers = TRUE) %>%
+  tokens_remove(stopwords("en")) %>%
+  dfm() %>%
+  dfm_trim(min_termfreq = 4, max_docfreq = 10)
+
+# fit LDA model 
+LDA_fit_20 <- quanteda::convert(dfm_unratified, to = "topicmodels") |> 
+  LDA(k = 20)
+
+# Print Topic Models
+get_terms(LDA_fit_20, 5)
+```
+
+

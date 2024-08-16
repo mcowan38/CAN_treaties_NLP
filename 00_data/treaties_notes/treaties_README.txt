@@ -1,0 +1,2 @@
+- Military to Bureaucracy switch; decades of Military discussion transferred to Bureaucracy.
+- Notable shift mirrored in Canada ~1815 (no longer fighting between US/Britain); 1830 noticeably more bureaucratic (and less nice).
