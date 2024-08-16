@@ -29,7 +29,7 @@ This paper replicates Spirling's (2012) string kernel principal components analy
 ## Wording:
 - Differentiation in settlement/agreement language (expect differences to come up a lot and mirror "harshness").
 
-# Dimensions/Principal Components:
+# Dimensions:
 ## KPC1:
 - Douglas Treaties: appear to be forms with no mention of the Crown (focused on the West with many different Indigenous groups).
 - Conceivable from a colonial standpoint that you would create one template and have it signed by one of the communities, then leverage it to the next community.
