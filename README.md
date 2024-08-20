@@ -1,55 +1,67 @@
-# CAN_treaties_replication
+# Cowan, M., Greenaway, C., Schnurbusch, P., & Cowie, C. (2024). *Evolving promises: Analyzing reconciliation sentiment and treaty dynamics in Canadian Indigenous relations*. Working paper.
 Replication Study for Spirling (2012) NLP analysis of treaties.
 
-## Abstract:
-This paper replicates Spirling's (2012) string kernel principal components analysis to assess the evolving dynamics of treaty relationships between the Crown (and later the Canadian government) and Indigenous nations from pre-Confederation to post-Confederation into the modern treaty era. Following the Calder decision in 1973, this landmark ruling acknowledges Indigenous rights, leading to James Bay and Northern Quebec Agreement in 1978, which was the first in a series of modern treaties. In evaluating the principal components of treaties by employing unsupervised machine learning techniques, this paper adapts Spirling’s text-scaling approach to systemically analyze digitized treaty texts. We evaluates changes in the political authority and “fiduciary responsibility” involved in Indigenous-settler relationships, and analyze observable lexical changes within modern treaties akin to those observed in the initial treaties prior to Confederation.
-  
-## Background:
-- Feir et al. (2023) - Colonization Through Treaties
-- J.R. Miller - Compact, Contract, Covenant, Aboriginal Treaty-Making in Canada
-- Cowie Dissertation (first 3 Chapters)
-- 21 Facts About the Indian Act
+## Abstract
+This paper replicates Spirling's (2012) string kernel principal components analysis to assess the evolving dynamics of treaty relationships between the Crown (and later the Canadian government) and Indigenous nations from pre-Confederation to post-Confederation into the modern treaty era. Following the Calder decision in 1973, this landmark ruling acknowledged Indigenous rights, leading to the James Bay and Northern Quebec Agreement in 1978, which was the first in a series of modern treaties. In evaluating the principal components of treaties by employing NLP and machine learning techniques (i.e., TF-IDF, KPCA, random forest, and XGBoost), this paper adapts Spirling’s vector-space text-scaling approach to systematically analyze digitized treaty texts. We evaluate changes in the political authority and “fiduciary responsibility” involved in Indigenous-settler relationships and analyze observable lexical changes within modern treaties akin to those observed in the initial treaties prior to Confederation.
 
-## Resources for Canadian Digitized Treaties:
-- https://library-archives.canada.ca/eng/collection/research-help/indigenous-heritage/Pages/treaties-surrenders-agreements.aspx#a1
-- Library Archives Canada
-- (Archives) Ontario specific version w/ interactive map
+## Table of Contents
+- [Abstract](#abstract)
+- [Preliminary Literature Review](#preliminary-literature-review)
+- [Resources for Canadian Digitized Treaties](#resources-for-canadian-digitized-treaties)
+- [Canadian Treaty Considerations](#canadian-treaty-considerations)
+- [Treaty Lexicon](#treaty-lexicon)
+- [KPC1: Monarchical/Republican](#kpc1-monarchicalrepublican)
+- [Douglas Treaties' Position](#douglas-treaties-position)
+- [Notes on James Douglas](#notes-on-james-douglas)
+- [KPC2: Pre-Post Confederation Language](#kpc2-pre-post-confederation-language)
+- [Additional](#additional)
+- [Tasks](#tasks)
+- [Spirling (2012)](#spirling-2012)
+
+## Preliminary Literature Review
+- Benn, C. (2019). *Solemn words and foundational documents: An annotated discussion of Indigenous-Crown treaties in Canada, 1752–1923*. Canadian Historical Review, 100(4), 661–663. https://doi.org/10.3138/chr.100.4.br05
+- Feir, D., Jones, M., & Gillezeau, R. (2023). *Colonization through treaties: Evidence from Canada*. SSRN. https://ssrn.com/abstract=4579329 or http://dx.doi.org/10.2139/ssrn.4579329
+- Miller, J. R. (2009). *Compact, contract, covenant: Aboriginal treaty-making in Canada*. University of Toronto Press.
+- Cowie, C. (2024). *Chapters 1-3 of Dissertation*.
+- Joseph, B. (2018). *21 things you may not know about the Indian Act: Helping Canadians make reconciliation with Indigenous Peoples a reality*. Indigenous Relations Press.
+- Grimmer, J., Roberts, M. E., & Stewart, B. M. (2022). *Text as Data: A New Framework for Machine Learning and the Social Sciences*. Princeton University Press.
+
+## Resources for Canadian Digitized Treaties
+- [Library Archives Canada](https://library-archives.canada.ca/eng/collection/research-help/indigenous-heritage/Pages/treaties-surrenders-agreements.aspx#a1)
+- Ontario Archives (with interactive map)
 - Royal Commission on Aboriginal Peoples (assessment of relationship between Canadian & Indigenous Peoples)
-- Crown Indigenous Relations
 
-## Canadian Treaty considerations:
-- Surrender (Upper Canada treaties)
-- Peace/Alliance
-- Sharing
-- Agreements (Inuit)
-- 1923-on: Settlement (pre-Neoliberal) - could include land-claim processes
-- (Modern Neoliberal): Tri-partide/province (1923 on there's always a province at the table [Ontario]); had to have the approval of Ontario and Canada.
-- 1975-present: called "agreements" (Greenaway's idea assessing/comparing contemporary treaties).
+## Canadian Treaty Considerations
+- **Pre-Neoliberal (before 1923)**: Settlement/land-claim processes.
+- **Modern Neoliberal (1923-present)**: Tri-partite/province involvement (there's always a province at the table - requiring approval from both the province and federal government).
+- **Modern (1975-present)**: Known as "agreements".
 
-## Wording:
-- Differentiation in settlement/agreement language (expect differences to come up a lot and mirror "harshness").
+## Treaty Lexicon
+- Differentiation in settlement/agreement language is expected to mirror "harshness."
 
-# Dimensions:
-## KPC1:
-- Douglas Treaties: appear to be forms with no mention of the Crown (focused on the West with many different Indigenous groups).
-- Conceivable from a colonial standpoint that you would create one template and have it signed by one of the communities, then leverage it to the next community.
-- Seem to be stylized as a Republican treaties (like a Republican/American wrote the treaties).
-- Thus, Republican vs. Monarchical dimension.
+# KPC1: Monarchical/Republican
+- **Douglas Treaties**: Appear to be forms with no mention of the Crown, focused on the West with many different Indigenous groups.
+  - From a colonial standpoint, it's conceivable that a template was created and signed by one community, then leveraged for use with subsequent communities.
+  - Styled as **Republican** treaties (as if written by Americans) rather than **Monarchical** treaties.
+  - Thus, the **Republican vs. Monarchical** dimension is relevant.
 
-## Relevant Narrative that could explain Douglas Treaties low in KPC1, and low-ish in KPC2:
-- Relevant narrative: position of power increased from 1867-1885 – historical account of the Canadian states response to the Louis Riel rebellion (Red River – Metis; Canadian state offers the concession to creating Manitoba because they didn’t have the military power to crush protest).
-- However, vs. the 1885 Rebellion by same group, the government had the ability to crush the rebellion and hang the leader (we're talking about the same Canadian government and same group of people; in one place they create a province, and in the next Riel gets hung).
-- There should an observable distinction where we see the treaties become less friendly after that period (based on the juxtaposition of those 2 governmental responses).
-- Keep in mind this is a country founded upon the use of imposed meaning – to make people feel like they had a decentralized, but its actually centralized.
-- Its possible there was a different strategy that the Canadian state used; so, “Peace and Friendship”, but really it was bullshit; Indigenous people would have to send hostages as a guarantee they would adhere to the treaty.
+## Douglas Treaties' Position
+- The position of power increased from 1867-1885, as seen in the Canadian state's responses to the Louis Riel rebellions.
+  - In 1869-70, the Canadian state created Manitoba because it lacked the military power to crush the uprising.
+  - By contrast, during the 1885 rebellion, the government was able to crush the uprising and execute Riel.
+  - This juxtaposition suggests a shift in treaty tone, with treaties becoming less friendly after 1885.
+  - Canada's use of imposed meaning often created a perception of decentralization, even though centralization was the reality.
+  - A possible strategy used by the Canadian state was presenting treaties as "Peace and Friendship" while Indigenous people were required to send hostages as guarantees of adherence to the treaties.
 
-## Notes on Douglas:
-- Scottish (less connection with the Crown).
+## Notes on James Douglas
+- Scottish heritage, possibly with less connection to the Crown. More information can be found [here](https://ojs.library.ubc.ca/index.php/bcstudies/article/view/1252/1295).
 
-## KPC2: pre-post confederation confederation language
-## Treat the factor loadings as weights:
-- Assume he got "harshness" right and apply it to Canada; if he’s right and it’s generalizable, it should be visible (or not) in Canada.
+# KPC2: Pre-Post Confederation Language
+- [To Be Determined]
 
-# Spirling Replication Materials:
-- Paper: https://dataverse.harvard.edu/dataset.xhtml?persistentId=hdl:1902.1/17222
-- Code: https://github.com/ArthurSpirling/AJPS_Treaties_Replication/
+## Additional
+- Treat factor loadings as weights.
+- Correlation of importance scores.
+
+## Tasks
+- Tidy KPC1/KPC2 graphs (adjust m
