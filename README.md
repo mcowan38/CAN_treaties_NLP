@@ -1,4 +1,4 @@
-# Cowan, M., Greenaway, C., Schnurbusch, P., & Cowie, C. (2024). *Evolving promises: Analyzing reconciliation sentiment and treaty dynamics in Canadian-Indigenous relations*. Working paper.
+## Cowan, M., Greenaway, C., Schnurbusch, P., & Cowie, C. (2024). *Evolving promises: Analyzing reconciliation sentiment and treaty dynamics in Canadian-Indigenous relations*. Working paper.
 Canadian conceptual replication of Spirling (2012) NLP analysis of American-Indigenous treaties.
 
 ## Abstract
@@ -51,7 +51,7 @@ The position of power increased from 1867-1885, as seen in the Canadian state's 
 - By contrast, during the 1885 rebellion, the same government was able to crush the uprising and execute Riel.
 - This juxtaposition suggests a shift in treaty tone, with treaties becoming less friendly after 1885 (there should an observable distinction where we see the treaties become less friendly after that period).
 - Note: Canada is a country founded upon use of imposed meaning.
-  - e.g., Confederation proposed with the perception of decentralization, even though centralization was the reality).
+  - e.g., Confederation proposed with the perception of decentralization (even though centralization was the reality).
   - e.g., Canadian state presented treaties as "Peace and Friendship", yet Indigenous nations were required to send hostages to guarantee adherence.
 
 ## Notes on James Douglas
