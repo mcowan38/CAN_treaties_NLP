@@ -28,8 +28,8 @@ This paper replicates Spirling's (2012) string kernel principal components analy
 
 ## Resources for Canadian Digitized Treaties
 - [Library Archives Canada](https://library-archives.canada.ca/eng/collection/research-help/indigenous-heritage/Pages/treaties-surrenders-agreements.aspx#a1)
-- Ontario Archives (with interactive map)
-- Royal Commission on Aboriginal Peoples (assessment of relationship between Canadian & Indigenous Peoples)
+- Ontario Archives
+- Royal Commission on Aboriginal Peoples
 
 ## Canadian Treaty Considerations
 - **Pre-Neoliberal (before 1923)**: Settlement/land-claim processes.
