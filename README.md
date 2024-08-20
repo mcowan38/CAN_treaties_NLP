@@ -1,4 +1,4 @@
-## Cowan, M., Greenaway, C., Schnurbusch, P., & Cowie, C. (2024). *Evolving promises: Analyzing reconciliation sentiment and treaty dynamics in Canadian-Indigenous relations*. Working paper.
+## Cowan, M., Schnurbusch, P., Greenaway, C., & Cowie, C. (2024). *Evolving promises: Analyzing reconciliation sentiment and treaty dynamics in Canadian-Indigenous relations*. Working paper.
 Canadian conceptual replication of Spirling (2012) NLP analysis of American-Indigenous treaties.
 
 ## Abstract
