@@ -39,7 +39,7 @@ This paper replicates Spirling's (2012) string kernel principal components analy
 ## Treaty Lexicon
 - Differentiation in settlement/agreement language is expected to mirror "harshness."
 
-# KPC1: Monarchical/Republican
+## KPC1: Monarchical/Republican
 - **Douglas Treaties**: Appear to be forms with no mention of the Crown, focused on the West with many different Indigenous groups.
   - From a colonial standpoint, it's conceivable that a template was created and signed by one community, then leveraged for use with subsequent communities.
   - Styled as **Republican** treaties rather than **Monarchical** treaties.
@@ -57,7 +57,7 @@ The position of power increased from 1867-1885, as seen in the Canadian state's 
 ## Notes on James Douglas
 - Scottish heritage (ostensibly less connection to the Crown). More information can be found [here](https://ojs.library.ubc.ca/index.php/bcstudies/article/view/1252/1295).
 
-# KPC2: Pre-Post Confederation Language
+## KPC2: Pre-Post Confederation Language
 - [To Be Determined]
 
 ## Additional
@@ -67,6 +67,6 @@ The position of power increased from 1867-1885, as seen in the Canadian state's 
 ## Tasks
 - Tidy KPC1/KPC2 graphs (adjust margins on Plotly, stylize color scheme to original paper format).
 
-# Spirling (2012)
+## Spirling (2012)
 - [Original Paper](https://dataverse.harvard.edu/dataset.xhtml?persistentId=hdl:1902.1/17222)
 - [Supplementary Materials](https://github.com/ArthurSpirling/AJPS_Treaties_Replication/)
