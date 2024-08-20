@@ -42,19 +42,20 @@ This paper replicates Spirling's (2012) string kernel principal components analy
 # KPC1: Monarchical/Republican
 - **Douglas Treaties**: Appear to be forms with no mention of the Crown, focused on the West with many different Indigenous groups.
   - From a colonial standpoint, it's conceivable that a template was created and signed by one community, then leveraged for use with subsequent communities.
-  - Styled as **Republican** treaties (as if written by Americans) rather than **Monarchical** treaties.
+  - Styled as **Republican** treaties rather than **Monarchical** treaties.
   - Thus, the **Republican vs. Monarchical** dimension is relevant.
 
 ## Douglas Treaties' Position
-- The position of power increased from 1867-1885, as seen in the Canadian state's responses to the Louis Riel rebellions.
-  - In 1869-70, the Canadian state created Manitoba because it lacked the military power to crush the uprising.
-  - By contrast, during the 1885 rebellion, the government was able to crush the uprising and execute Riel.
-  - This juxtaposition suggests a shift in treaty tone, with treaties becoming less friendly after 1885.
-  - Canada's use of imposed meaning often created a perception of decentralization, even though centralization was the reality.
-  - A possible strategy used by the Canadian state was presenting treaties as "Peace and Friendship" while Indigenous people were required to send hostages as guarantees of adherence to the treaties.
+The position of power increased from 1867-1885, as seen in the Canadian state's responses to the Louis Riel rebellions.
+- In 1869-70, the Canadian state created Manitoba because it lacked the military power to crush the uprising.
+- By contrast, during the 1885 rebellion, the same government was able to crush the uprising and execute Riel.
+- This juxtaposition suggests a shift in treaty tone, with treaties becoming less friendly after 1885 (there should an observable distinction where we see the treaties become less friendly after that period).
+- Note: Canada is a country founded upon use of imposed meaning.
+  - e.g., Confederation proposed with the perception of decentralization, even though centralization was the reality).
+  - e.g., Canadian state presented treaties as "Peace and Friendship", yet Indigenous nations were required to send hostages to guarantee adherence.
 
 ## Notes on James Douglas
-- Scottish heritage, possibly with less connection to the Crown. More information can be found [here](https://ojs.library.ubc.ca/index.php/bcstudies/article/view/1252/1295).
+- Scottish heritage (ostensibly less connection to the Crown). More information can be found [here](https://ojs.library.ubc.ca/index.php/bcstudies/article/view/1252/1295).
 
 # KPC2: Pre-Post Confederation Language
 - [To Be Determined]
@@ -64,4 +65,8 @@ This paper replicates Spirling's (2012) string kernel principal components analy
 - Correlation of importance scores.
 
 ## Tasks
-- Tidy KPC1/KPC2 graphs (adjust m
+- Tidy KPC1/KPC2 graphs (adjust margins on Plotly, stylize color scheme to original paper format).
+
+# Spirling (2012)
+- [Original Paper](https://dataverse.harvard.edu/dataset.xhtml?persistentId=hdl:1902.1/17222)
+- [Supplementary Materials](https://github.com/ArthurSpirling/AJPS_Treaties_Replication/)
