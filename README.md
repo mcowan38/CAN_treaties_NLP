@@ -1,21 +1,13 @@
-## Cowan, M., Schnurbusch, P., Greenaway, C., & Cowie, C. (2024). *Evolving promises: Analyzing reconciliation sentiment and treaty dynamics in Canadian-Indigenous relations*. Working paper.
+## Cowan, M., Cowie, C., Greenaway, C., & Schnurbusch, P. (2024). *Stagnant Promises: Analyzing treaty dynamics in Canadian-Indigenous relations*. Working paper.
 Conceptual replication of Spirling (2012) NLP analysis of American-Indigenous treaties.
 
 ## Abstract
-This paper replicates Spirling's (2012) string kernel principal components analysis to assess the evolving dynamics of treaty relationships between the Crown (and later the Canadian government) and Indigenous nations from pre-Confederation to post-Confederation into the modern treaty era. Following the Calder decision in 1973, this landmark ruling acknowledged Indigenous rights, leading to the James Bay and Northern Quebec Agreement in 1978, which was the first in a series of modern treaties. In evaluating the principal components of treaties by employing NLP and machine learning techniques (i.e., TF-IDF, KPCA, random forest, and XGBoost), this paper adapts Spirling’s vector-space text-scaling approach to systematically analyze digitized treaty texts. We evaluate changes in the political authority and “fiduciary responsibility” involved in Indigenous-settler relationships and analyze observable lexical changes within modern treaties akin to those observed in the initial treaties prior to Confederation.
+This study examines the applicability of Arthur Spirling's (2012) quantitative methodology, which identified tonal shifts in U.S.–Indian treaties corresponding to historical events, to the analysis of Canadian-Indigenous treaties. Employing string kernel principal components analysis (KPCA) on a comprehensive corpus of Canadian treaties, we sought to uncover linguistic patterns and shifts over time. Contrary to findings in the U.S. context, our analysis reveals a remarkable linguistic consistency in Canadian treaties over time, with principal components categorizing treaties based on thematic content rather than tonal shifts linked to historical events -- reflecting the persistent use of formal legal language and the marginalization of Indigenous perspectives in the treaty-making process. The study underscores the limitations of text-as-data approaches in contexts where treaties were drafted without significant Indigenous input and where oral traditions prevail. We advocate for methodological pluralism that moves beyond quantitative categorization, incorporating Indigenous knowledge systems to achieve a more nuanced understanding of treaty relationships.
 
 ## Table of Contents
 - [Abstract](#abstract)
 - [Preliminary Literature Review](#preliminary-literature-review)
 - [Resources for Canadian Digitized Treaties](#resources-for-canadian-digitized-treaties)
-- [Canadian Treaty Considerations](#canadian-treaty-considerations)
-- [Treaty Lexicon](#treaty-lexicon)
-- [KPC1: Monarchical/Republican](#kpc1-monarchicalrepublican)
-- [Douglas Treaties' Position](#douglas-treaties-position)
-- [Notes on James Douglas](#notes-on-james-douglas)
-- [KPC2: Pre-Post Confederation Language](#kpc2-pre-post-confederation-language)
-- [Additional](#additional)
-- [Tasks](#tasks)
 - [Spirling (2012)](#spirling-2012)
 
 ## Preliminary Literature Review
@@ -30,42 +22,6 @@ This paper replicates Spirling's (2012) string kernel principal components analy
 - [Library Archives Canada](https://library-archives.canada.ca/eng/collection/research-help/indigenous-heritage/Pages/treaties-surrenders-agreements.aspx#a1)
 - Ontario Archives
 - Royal Commission on Aboriginal Peoples
-
-## Canadian Treaty Considerations
-- **Pre-Neoliberal (before 1923)**: Settlement/land-claim processes.
-- **Modern Neoliberal (1923-present)**: Tri-partite/province involvement (there's always a province at the table - requiring approval from both the province and federal government).
-- **Modern (1975-present)**: Known as "agreements".
-
-## Treaty Lexicon
-- Differentiation in settlement/agreement language is expected to mirror "harshness."
-
-## KPC1: Monarchical/Republican
-- **Douglas Treaties**: Appear to be forms with no mention of the Crown, focused on the West with many different Indigenous groups.
-  - From a colonial standpoint, it's conceivable that a template was created and signed by one community, then leveraged for use with subsequent communities.
-  - Styled as **Republican** treaties rather than **Monarchical** treaties.
-  - Thus, the **Republican vs. Monarchical** dimension is relevant.
-
-## Douglas Treaties' Position
-The position of power increased from 1867-1885, as seen in the Canadian state's responses to the Louis Riel rebellions.
-- In 1869-70, the Canadian state created Manitoba because it lacked the military power to crush the uprising.
-- By contrast, during the 1885 rebellion, the same government was able to crush the uprising and execute Riel.
-- This juxtaposition suggests a shift in treaty tone, with treaties becoming less friendly after 1885 (there should an observable distinction where we see the treaties become less friendly after that period).
-- Note: Canada is a country founded upon use of imposed meaning.
-  - e.g., Confederation proposed with the perception of decentralization (even though centralization was the reality).
-  - e.g., Canadian state presented treaties as "Peace and Friendship", yet Indigenous nations were required to send hostages to guarantee adherence.
-
-## Notes on James Douglas
-- Scottish heritage (ostensibly less connection to the Crown). More information can be found [here](https://ojs.library.ubc.ca/index.php/bcstudies/article/view/1252/1295).
-
-## KPC2: Pre-Post Confederation Language
-- [To Be Determined]
-
-## Additional
-- Treat factor loadings as weights.
-- Correlation of importance scores.
-
-## Tasks
-- Tidy KPC1/KPC2 graphs (adjust margins on Plotly, stylize color scheme to original paper format).
 
 ## Spirling (2012)
 - [Original Paper](https://dataverse.harvard.edu/dataset.xhtml?persistentId=hdl:1902.1/17222)
