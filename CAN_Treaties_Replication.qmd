@@ -334,14 +334,14 @@ KPC10 <- kpca(
 )
 
 # Output the result:
-save(KPC1, file = "./00_scripts/01_CAN/CAN_KPC1.rdata")
-save(KPC2, file = "./00_scripts/01_CAN/CAN_KPC2.rdata")
-save(KPC10, file = "./00_scripts/01_CAN/CAN_KPC10.rdata")
+# save(KPC1, file = "./00_scripts/01_CAN/CAN_KPC1.rdata")
+# save(KPC2, file = "./00_scripts/01_CAN/CAN_KPC2.rdata")
+# save(KPC10, file = "./00_scripts/01_CAN/CAN_KPC10.rdata")
 
 # Load Data:
-load("./00_scripts/01_CAN/CAN_KPC1.rdata")
-load("./00_scripts/01_CAN/CAN_KPC2.rdata")
-load("./00_scripts/01_CAN/CAN_KPC10.rdata")
+load("./00_scripts/01_CAN/CAN_KPC1_douglas.rdata")
+load("./00_scripts/01_CAN/CAN_KPC2_douglas.rdata")
+load("./00_scripts/01_CAN/CAN_KPC10_douglas.rdata")
 ```
 
 ## **Scree Plot by Eigenvalues**
@@ -1105,13 +1105,13 @@ print(found_sentences)
 ```{r}
 # Analyze Time Trends:
 # Universe of Cases (again, needs to match elements)
-universe <- read.csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases.csv")
+universe <- read.csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases_douglas.csv")
 universed <- gsub("\\/", "-", universe$Date)
 universe$Date <-  as.Date(universed, format = "%Y-%m-%d")
 
 
 # Pull in PC1 estimates
-load(file = "./00_scripts/01_CAN/CAN_KPC1.rdata")
+load(file = "./00_scripts/01_CAN/CAN_KPC1_douglas.rdata")
 rot <- KPC1@rotated
 
 require(RPMG)
@@ -1178,7 +1178,7 @@ shape_map <- c(
   "Peace and Friendship" = 4,
   "Treaties of Peace and Neutrality" = 1,
   "Upper Canada Land Surrenders" = 25,
-  "Douglas Treaties" = 13,
+  "Douglas Treaties" = 1,
   "Robinson Treaties" = 2,
   "Royal Proclamation" = 1,
   "Williams Treaties" = 2,
@@ -1339,7 +1339,7 @@ plot.it.out1()
 require(RPMG)
 # universe of cases (again, needs to match elements)
 universe <-
-  read.csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases.csv")
+  read.csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases_douglas.csv")
 
 # Clean Dates
 universed <- gsub("\\/", "-", universe$Date)
@@ -1353,7 +1353,7 @@ universe$Type <- gsub(pattern = pattern, "The Numbered Treaties", universe$Type)
 
 
 # Pull in PC1 estimates
-load(file = "./00_scripts/01_CAN/CAN_KPC1.rdata")
+load(file = "./00_scripts/01_CAN/CAN_KPC1_douglas.rdata")
 rot <- KPC1@rotated
 
 repca <- RESCALE(
@@ -1405,13 +1405,13 @@ plot_ly(data = bdo, x = ~ dates, y = ~ rpca, type = 'scatter', mode = 'markers',
 # Analyze Time Trends:
 # universe of cases (again, needs to match number of elements)
 universe <-
-  read.csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases.csv")
+  read.csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases_douglas.csv")
 universed <- gsub("\\/", "-", universe$Date)
 universe$Date <-  as.Date(universed, format = "%Y-%m-%d")
 
 
 # Pull in PC2 estimates
-load(file = "./00_scripts/01_CAN/CAN_KPC2.rdata")
+load(file = "./00_scripts/01_CAN/CAN_KPC2_douglas.rdata")
 rot <- KPC2@rotated
 
 require(RPMG)
@@ -1479,7 +1479,7 @@ shape_map <- c(
   "Peace and Friendship" = 4,
   "Treaties of Peace and Neutrality" = 1,
   "Upper Canada Land Surrenders" = 25,
-  "Douglas Treaties" = 13,
+  "Douglas Treaties" = 1,
   "Robinson Treaties" = 2,
   "Royal Proclamation" = 1,
   "Williams Treaties" = 2,
@@ -1641,7 +1641,7 @@ plot.it.out2()
 require(RPMG)
 # universe of cases (again, needs to match elements)
 universe <-
-  read.csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases.csv")
+  read.csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases_douglas.csv")
 
 # Clean Dates
 universed <- gsub("\\/", "-", universe$Date)
@@ -1655,7 +1655,7 @@ universe$Type <- gsub(pattern = pattern, "The Numbered Treaties", universe$Type)
 
 
 #pull in pca estimates
-load(file = "./00_scripts/01_CAN/CAN_KPC2.rdata")
+load(file = "./00_scripts/01_CAN/CAN_KPC2_douglas.rdata")
 rot <- KPC2@rotated
 
 repca <- RESCALE(
