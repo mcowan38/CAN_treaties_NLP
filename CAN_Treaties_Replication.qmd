@@ -1067,6 +1067,92 @@ print(cor_pc1)
 print(cor_pc2)
 ```
 
+### **Biplot:**
+
+```{r}
+# Load PCA scores
+pca_scores_df <- read_csv("./00_documents/visuals/KPCA_scores_comparison.csv")
+
+# Remove the ".txt" extension from the 'Document' column
+pca_scores_df <- pca_scores_df %>%
+  mutate(Document = str_remove(Document, "\\.txt$"))
+
+# Load treaty metadata
+treaty_metadata <- read_csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases_douglas.csv")
+
+# Clean and prepare dates
+treaty_metadata <- treaty_metadata %>%
+  mutate(Date = as.Date(str_replace_all(Date, "/", "-"), format = "%Y-%m-%d"))
+
+# Merge PCA scores with metadata based on the Document identifier
+pca_merged_df <- pca_scores_df %>%
+  left_join(treaty_metadata, by = c("Document" = "Treaty ID"))
+
+# Create the interactive biplot using Plotly with Main Title and Subtitle
+biplot <- plot_ly(
+  data = pca_merged_df,
+  x = ~PC1_Score,
+  y = ~PC2_Score,
+  type = 'scatter',
+  mode = 'markers',  # Only markers, no text labels on the plot
+  color = ~Type,
+  colors = "Set1",  # Choose a suitable color palette
+  marker = list(
+    size = 10,
+    opacity = 0.8,
+    line = list(width = 1, color = '#FFFFFF')  # White border for clarity
+  ),
+  text = ~paste(
+    "Treaty Name:", `Treaty Name`,
+    "<br>Type:", Type,
+    "<br>Date:", Date,
+    "<br>PC1 Score:", round(PC1_Score, 3),
+    "<br>PC2 Score:", round(PC2_Score, 3)
+  ),
+  hoverinfo = 'text'  # Show only the custom text on hover
+) %>%
+  layout(
+    title = list(
+      text = paste(
+        "Biplot of Canadian-Indigenous Treaties",
+        "<br>",
+        "<sup>",
+        "High KPC1 indicates a greater focus on land transactions, property rights, and financial compensation. Low KPC1 emphasizes governance structures, legal administration, and ongoing relations with Indigenous peoples.",
+        "<br>",
+        "High KPC2 reflects the use of formal legal language with explicit references to the British Crown. Low KPC2 denotes more practical and less formal language.",
+        "</sup>"
+      ),
+      x = 0.5,
+      y = 0.95,
+      xanchor = "center",
+      yanchor = "top",
+      font = list(size = 16)
+    ),
+    xaxis = list(
+      title = "Principal Component 1 (KPC1)",
+      titlefont = list(size = 14),
+      tickfont = list(size = 12)
+    ),
+    yaxis = list(
+      title = "Principal Component 2 (KPC2)",
+      titlefont = list(size = 14),
+      tickfont = list(size = 12)
+    ),
+    legend = list(
+      title = list(text = "Treaty Type", font = list(size = 14)),
+      font = list(size = 12)
+    ),
+    margin = list(l = 100, r = 100, t = 150, b = 80)  # Increased top margin for subtitle
+  )
+
+# Display the biplot
+biplot
+
+# 8. (Optional) Save the interactive biplot as an HTML file
+htmlwidgets::saveWidget(biplot, "biplot_canadian_indigenous_treaties.html")
+
+```
+
 ## [**Relevant Sentences Search Function**]{.underline}
 
 ```{r}
