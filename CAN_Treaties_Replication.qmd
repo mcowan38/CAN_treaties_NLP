@@ -1067,7 +1067,7 @@ print(cor_pc1)
 print(cor_pc2)
 ```
 
-### **Biplot:**
+### **Biplot: KPC1 & KPC2**
 
 ```{r}
 # Load PCA scores
@@ -1148,9 +1148,44 @@ biplot <- plot_ly(
 # Display the biplot
 biplot
 
-# 8. (Optional) Save the interactive biplot as an HTML file
+# Save the interactive biplot as an HTML file
 htmlwidgets::saveWidget(biplot, "biplot_canadian_indigenous_treaties.html")
+```
 
+### **Principal Components Table:**
+
+```{r}
+# Load PCA scores
+pca_scores_df <- read_csv("./00_documents/visuals/KPCA_scores_comparison.csv")
+
+# Remove the ".txt" extension from the 'Document' column
+pca_scores_df <- pca_scores_df %>%
+  mutate(Document = str_remove(Document, "\\.txt$"))
+
+# Load treaty metadata
+treaty_metadata <- read_csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases_douglas.csv")
+
+# Clean and prepare dates
+treaty_metadata <- treaty_metadata %>%
+  mutate(Date = as.Date(str_replace_all(Date, "/", "-"), format = "%Y-%m-%d"))
+
+# Merge PCA scores with metadata based on the Document identifier
+pca_merged_df <- pca_scores_df %>%
+  left_join(treaty_metadata, by = c("Document" = "Treaty ID"))
+
+# Summarize KPC1 and KPC2 based on descriptions in the subtitle
+pca_merged_df <- pca_merged_df %>%
+  mutate(
+    KPC1_Summary = if_else(PC1_Score > 0, "Land", "Governance"),
+    KPC2_Summary = if_else(PC2_Score > 0, "Formal", "Practical")
+  )
+
+# Select the columns: Treaty Name, KPC1_Summary, PC1_Score, KPC2_Summary, and PC2_Score
+summary_table <- pca_merged_df %>%
+  select(`Treaty Name`, KPC1_Summary, PC1_Score, KPC2_Summary, PC2_Score)
+
+# Display the table
+summary_table
 ```
 
 ## [**Relevant Sentences Search Function**]{.underline}
