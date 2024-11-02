@@ -16,7 +16,7 @@ format:
 editor: visual
 ---
 
-# Canadian KPCA Results{.underline}
+# Canadian KPCA Results {.underline}
 
 ```{r libraries_dependencies, include=FALSE}
 # Generate KPCA for Time Trends + PCA, Correlations, and Random Forests
@@ -31,7 +31,7 @@ library(xgboost) # for xgb
 library(caret)
 library(stringr) # for string manipulation 
 library(DT) # for datatables 
-
+library(kableExtra) # for html tables 
 
 # change global options 
 knitr::opts_chunk$set(
@@ -182,7 +182,6 @@ FULL_corp <- tm_map(FULL_corp, content_transformer(function(x) {
 
 -   Convert to lower case, remove punctuation, remove stop words, and stem.
 
-
 ```{r clean_data}
 # Convert to lower case
 CAN_corp <- tm_map(FULL_corp, content_transformer(tolower))
@@ -260,7 +259,7 @@ CAN_corp <- tm_map(CAN_corp, stemDocument)
     -   **Type**: The `type="string"` parameter specifies that the kernel should treat the input as strings. This is important because it indicates that the kernel will be analyzing text data, rather than numerical data.
     -   **Length**: The `length=5` parameter refers to the length of **substrings** (also called **n-grams** when discussing text) that the kernel considers when comparing two documents.
     -   In simple terms, this means that the kernel is looking at **how many sequences of 5 consecutive characters** **(n-grams of length 5) are common between any two pieces of text.**
-    
+
 ```{r make_similarity_matrix}
 # Commented out for testing 
 # # Convert to character:
@@ -304,7 +303,7 @@ CAN_corp <- tm_map(CAN_corp, stemDocument)
 # save(KPC2, file = "./00_scripts/01_CAN/CAN_KPC2.rdata")
 # save(KPC10, file = "./00_scripts/01_CAN/CAN_KPC10.rdata")
 ```
-    
+
 ```{r load_similarity_matrix}
 # load similarity matrix results
 load("./00_scripts/01_CAN/CAN_KPC1_douglas.rdata")
@@ -312,7 +311,6 @@ load("./00_scripts/01_CAN/CAN_KPC2_douglas.rdata")
 load("./00_scripts/01_CAN/CAN_KPC10_douglas.rdata")
 ```
 
-  
 ## **Scree Plot by Eigenvalues**
 
 -   Here we're looking for the elbow (arguably occurs at 1 or 2 eigenvalues).
@@ -321,8 +319,7 @@ load("./00_scripts/01_CAN/CAN_KPC10_douglas.rdata")
 
     -   Higher eigenvalues mean that the principal component captures more variance from the data.
 
--   We had to change up how many Principal Components were being detected so we could get a graph out of this (here we look at 10).  
-  
+-   We had to change up how many Principal Components were being detected so we could get a graph out of this (here we look at 10).
 
 ```{r new_scree_plot}
 eigenvalues <- KPC10@eig
@@ -435,8 +432,7 @@ pc2_scores <- resid(lm(pc2_scores ~ seq_along(pc2_scores)))
 #pc2_scores
 ```
 
-
-## Correlation Results 
+## Correlation Results
 
 ### Principle Component 1
 
@@ -528,12 +524,18 @@ write.csv(
   row.names = FALSE
 )
 
-# display results using datatable 
+# display results using kable() 
 results_df_pc2 %>% 
-  datatable()
+  `rownames<-`( NULL ) %>% # deletes rownames 
+  dplyr::mutate(Correlation = round(x = Correlation, digits = 3)) %>% 
+  kbl(caption = "<b>Table N</b> <br><i>PC2 Correlation Results</i>") %>%
+  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
+  scroll_box(width = "500px", height = "500px") %>% 
+  footnote(general = "Here is a general comments of the table. ")
+
 ```
 
-## Random Forest Results 
+## Random Forest Results
 
 **Why use both approaches** (1. KPCA & 2. PCA via TDM with Cor & RF)?
 
@@ -559,39 +561,39 @@ results_df_pc2 %>%
 -   **Feature Importance Accumulation**: Similarly, feature importance – measured by how much the prediction error increases when a feature is left out---are also aggregated across all trees. This aggregation gives a robust estimate of each term's overall importance across the entire model.
 -   **Final Interpretation**: The accumulated feature importance values tell us which terms consistently play a significant role in predicting or explaining the principal component scores. Higher importance suggests a term strongly influences the PCA score, providing insights into the themes or patterns that might be driving the variations captured by the PCA.
 
-## Principle Component 1 
+## Principle Component 1
 
-### Naive Random Forest 
+### Naive Random Forest
 
 ```{r rand_forest_pc1}
-# Fit Random Forest model for 1 Component:
-rf_model <- randomForest(as.matrix(dtm_1),
-               pc1_scores,
-               ntree = 500,
-               importance = TRUE)
-
-# Print the model summary to check performance:
-print(rf_model)
-
-# Extract importance scores:
-importance_scores_pc1 <- importance(rf_model)
-
-# Make a data frame of terms and their importance:
-importance_df_pc1 <-
-  data.frame(Term = colnames(dtm_1), Importance = importance_scores_pc1[, "%IncMSE"])
-
-# Sort the terms by decreasing importance:
-importance_df_pc1 <- importance_df_pc1[order(-importance_df_pc1$Importance), ]
-
-# Display the top important terms:
-top_terms <- head(importance_df_pc1, 35)
-
-# Optionally, output results to .csv file:
-write.csv(
-  importance_df_pc1,
-  "./00_documents/visuals/term_importance_PC1.csv",
-  row.names = FALSE
-)
+# # Fit Random Forest model for 1 Component:
+# rf_model <- randomForest(as.matrix(dtm_1),
+#                pc1_scores,
+#                ntree = 500,
+#                importance = TRUE)
+# 
+# # Print the model summary to check performance:
+# print(rf_model)
+# 
+# # Extract importance scores:
+# importance_scores_pc1 <- importance(rf_model)
+# 
+# # Make a data frame of terms and their importance:
+# importance_df_pc1 <-
+#   data.frame(Term = colnames(dtm_1), Importance = importance_scores_pc1[, "%IncMSE"])
+# 
+# # Sort the terms by decreasing importance:
+# importance_df_pc1 <- importance_df_pc1[order(-importance_df_pc1$Importance), ]
+# 
+# # Display the top important terms:
+# top_terms <- head(importance_df_pc1, 35)
+# 
+# # Optionally, output results to .csv file:
+# write.csv(
+#   importance_df_pc1,
+#   "./00_documents/visuals/term_importance_PC1.csv",
+#   row.names = FALSE
+# )
 
 # import term importance scores 
 importance_df_pc1 <- read.csv("00_documents/visuals/term_importance_PC1.csv")
@@ -604,7 +606,7 @@ importance_df_pc1 %>%
   datatable()
 ```
 
-### XGB Model Tuning 
+### XGB Model Tuning
 
 ```{r}
 #| eval: false # skips code execution entirely, comment out to reset 
@@ -673,7 +675,7 @@ final_model <- xgb.train(params = best_params,
 preds <- predict(final_model, dtrain, iteration_range = c(1, best_params$nrounds))
 ```
 
-### XGB Model Results 
+### XGB Model Results
 
 ```{r}
 # # Convert term-document matrix to matrix format
@@ -729,9 +731,9 @@ importance_df_1 %>%
   datatable()
 ```
 
-## Principle Component 2 
+## Principle Component 2
 
-### Naive Random Forest 
+### Naive Random Forest
 
 ```{r rand_forest_pc2}
 # Fit the Random Forest model using PC2 scores:
@@ -777,7 +779,7 @@ top_terms_pc2 %>%
   datatable()
 ```
 
-### XGB Model Tuning 
+### XGB Model Tuning
 
 ```{r}
 # Convert term-document matrix to matrix format
@@ -846,7 +848,7 @@ top_terms_pc2 %>%
 # preds
 ```
 
-### XGB Model Results 
+### XGB Model Results
 
 ```{r}
 # Convert term-document matrix to matrix format
@@ -899,7 +901,8 @@ write.csv(
 top_terms_xgb_2 %>% 
   datatable()
 ```
-### BRF - PC1 Feature Importance 
+
+### BRF - PC1 Feature Importance
 
 ```{r}
 # BRF - PC1 Feature Imporance 
@@ -986,7 +989,8 @@ plot_ly(data = importance_df_pc1[1:35,], x = ~Importance, y = ~Term, type = 'bar
 
 ```
 
-### BRF - PC2 Feature Importance 
+### BRF - PC2 Feature Importance
+
 ```{r}
 # BRF - PC2 Feature Imporance 
 
@@ -1039,7 +1043,6 @@ plot_ly(data = top_terms_pc2[1:35,], x = ~Importance, y = ~Term, type = 'bar',
   config(displaylogo = FALSE)
 ```
 
-
 ### **BRF Models vs. Prediction – Correlations:**
 
 ```{r brf_models_v_predictions_correlations}
@@ -1051,6 +1054,7 @@ cor_pc2 <- cor(pc2_scores, predict(rf_model_pc2))
 print(cor_pc1)
 print(cor_pc2)
 ```
+
 ### **Biplot: KPC1 & KPC2**
 
 ```{r biplot_kpc1_v_kpc2}
@@ -1130,7 +1134,6 @@ biplot
 saveWidget(biplot, "biplot_canadian_indigenous_treaties.html")
 ```
 
-
 ### **Principal Components Table:**
 
 ```{r principle_components_table}
@@ -1169,4 +1172,3 @@ summary_table %>%
 ```
 
 # Time Trend Analysis
-
