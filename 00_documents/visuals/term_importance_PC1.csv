@@ -1,4 +1,5 @@
 "Term","Importance"
+<<<<<<< HEAD
 "successor",8.71331135036488
 "indian",7.51944578460183
 "thousand",7.24121140695324
@@ -399,11 +400,219 @@
 "deed",0.0578845534026787
 "river",0.033478607471543
 "line",0.0310152738597331
+=======
+"successor",8.88055596567548
+"indian",7.9112299158918
+"unto",7.4864092567691
+"heir",6.82398085046188
+"thousand",6.42599331668867
+"confirm",5.80777029265139
+"hundr",5.70964988995781
+"grant",5.40011324077852
+"give",5.01191907735504
+"ottawa",4.66525790575114
+"settlement",3.97315435088384
+"third",3.88625853067322
+"parcel",3.8398490892488
+"hold",3.82501588266149
+"pound",3.57362844656687
+"nation",3.54178591430975
+"protect",3.11936019850387
+"use",2.96738935536188
+"promis",2.88441421432558
+"control",2.74607218956532
+"said",2.61985627139279
+"within",2.58115143933877
+"island",2.54565696570867
+"sound",2.43721022735048
+"come",2.25384138088087
+"one",2.14781103462131
+"free",2.1169731077259
+"present",2.07567223188963
+"consider",2.05813889975876
+"tribe",2.05647782081879
+"taken",2.02392541635625
+"forev",1.98338770840496
+"father",1.97681201543354
+"princip",1.87691467714327
+"conclud",1.81283296425296
+"council",1.78537441917923
+"children",1.75130020074178
+"receiv",1.73438804279822
+"inhabit",1.73223124353264
+"return",1.72187888933467
+"mention",1.71099301646032
+"warrior",1.6151870722453
+"certain",1.60105722296912
+"unit",1.5732182164458
+"great",1.51738927297892
+"lie",1.50387196932704
+"appurten",1.47419848627052
+"number",1.47020247316116
+"begin",1.45597792646415
+"part",1.43127336037153
+"bargain",1.42534316270373
+"run",1.41700512806489
+"sold",1.40804120554512
+"bay",1.39025742691441
+"therefor",1.38170274566768
+"chippewa",1.37818572507466
+"clear",1.37230948193382
+"enter",1.3720930323997
+"peac",1.37203718301253
+"conduct",1.36125984264184
+"trade",1.35176301538327
+"consent",1.34573169452183
+"acknowledg",1.33596417655806
+"two",1.33428248612843
+"district",1.3323693126069
+"pass",1.32905327823368
+"observ",1.32114133124929
+"subscrib",1.31597305527455
+"receipt",1.31576766393072
+"surrend",1.30141406824373
+"georg",1.2958154751352
+"five",1.29176414757277
+"truli",1.29154876794129
+"know",1.2711476641463
+"upon",1.26800916759135
+"herebi",1.25270433107657
+"governor",1.24945279766559
+"mark",1.22077869516084
+"seven",1.19795228424521
+"easter",1.1903306240267
+"claim",1.17334532027239
+"hand",1.16747111108147
+"describ",1.16372523523374
+"king",1.16222675117202
+"deputi",1.15234784862793
+"resid",1.113433705782
+"hereunto",1.11247920464623
+"other",1.10667726791033
+"purpos",1.06241246586711
+"save",1.01887210533792
+"greet",1.01378076587261
+"good",1.00344619391249
+"aforesaid",1.00100150250438
+"agreement",1.00100150250438
+"alexand",1.00100150250438
+"assum",1.00100150250438
+"britann",1.00100150250438
+"cede",1.00100150250438
+"doth",1.00100150250438
+"empow",1.00100150250438
+"english",1.00100150250438
+"exceed",1.00100150250438
+"expens",1.00100150250438
+"extend",1.00100150250438
+"french",1.00100150250438
+"god",1.00100150250438
+"mile",1.00100150250438
+"north",1.00100150250438
+"offic",1.00100150250438
+"portion",1.00100150250438
+"prepar",1.00100150250438
+"produc",1.00100150250438
+"properti",1.00100150250438
+"satisfact",1.00100150250438
+"sixti",1.00100150250438
+"twelv",1.00100150250438
+"wherea",1.00100150250438
+"wood",1.00100150250438
+"accord",1.00100150250438
+"appoint",1.00100150250438
+"benefit",1.00100150250438
+"benevol",1.00100150250438
+"britain",1.00100150250438
+"chief",1.00100150250438
+"contain",1.00100150250438
+"emolu",1.00100150250438
+"empti",1.00100150250438
+"entitl",1.00100150250438
+"faith",1.00100150250438
+"first",1.00100150250438
+"general",1.00100150250438
+"grace",1.00100150250438
+"ground",1.00100150250438
+"heard",1.00100150250438
+"huron",1.00100150250438
+"juli",1.00100150250438
+"kingdom",1.00100150250438
+"languag",1.00100150250438
+"maintain",1.00100150250438
+"member",1.00100150250438
+"money",1.00100150250438
+"much",1.00100150250438
+"narrow",1.00100150250438
+"occupi",1.00100150250438
+"open",1.00100150250438
+"perform",1.00100150250438
+"privi",1.00100150250438
+"probabl",1.00100150250438
+"provinc",1.00100150250438
+"purchas",1.00100150250438
+"quebec",1.00100150250438
+"question",1.00100150250438
+"read",1.00100150250438
+"sell",1.00100150250438
+"shill",1.00100150250438
+"small",1.00100150250438
+"told",1.00100150250438
+"tract",1.00100150250438
+"voluntarili",1.00100150250438
+"well",1.00100150250438
+"bring",1.00100150250438
+"ever",1.00057610407451
+"august",0.995669711538242
+"year",0.990995661266049
+"men",0.981629969788989
+"northeast",0.96657517075058
+"made",0.956548069516695
+"strict",0.943700634145579
+"caus",0.941363139222862
+"whereof",0.91324511275619
+"wit",0.908384111605263
+"becom",0.883392003762335
+"currenc",0.835285439911914
+"indentur",0.826128423360047
+"subject",0.821055722529214
+"report",0.808165992646907
+"privileg",0.783498320192546
+"date",0.726419124835613
+"allow",0.715128267718645
+"four",0.667876548890191
+"boundari",0.651440130493644
+"attend",0.596603326184766
+"parti",0.56642579349947
+"term",0.561026778820693
+"eight",0.557921885980866
+"pay",0.545163841277212
+"situat",0.534357844495818
+"demand",0.533901989858289
+"yield",0.530689650385624
+"peopl",0.521125283666335
+"propos",0.492520207159903
+"lake",0.42264940210076
+"make",0.389930350070577
+"select",0.338981500503213
+"thenc",0.309994191480023
+"will",0.208547578008483
+"mckee",0.201889929374481
+"lord",0.187039750154503
+"articl",0.184981086552296
+"solemn",0.11344200020716
+"set",0.079751128711195
+"agre",0.0557092377912796
+"perpetu",0.0165080862832147
+"william",0.00978952695490406
+"whole",0.00509940403165671
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "abandon",0
 "abenc",0
 "abid",0
 "abil",0
 "abitibi",0
+"abl",0
 "abod",0
 "aborigin",0
 "abound",0
@@ -412,6 +621,7 @@
 "absent",0
 "absente",0
 "absolut",0
+"absolv",0
 "absurd",0
 "abus",0
 "abut",0
@@ -423,6 +633,7 @@
 "access",0
 "accid",0
 "accommod",0
+"accompani",0
 "accomplish",0
 "account",0
 "accru",0
@@ -436,6 +647,8 @@
 "acquit",0
 "acr",0
 "acreag",0
+"across",0
+"act",0
 "action",0
 "activ",0
 "actual",0
@@ -451,6 +664,10 @@
 "adjoin",0
 "adjourn",0
 "adjut",0
+<<<<<<< HEAD
+=======
+"admeasur",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "administ",0
 "administr",0
 "admir",0
@@ -460,13 +677,16 @@
 "advanc",0
 "advantag",0
 "advic",0
+"advis",0
 "affect",0
 "affirm",0
+"affix",0
 "afford",0
 "aforement",0
 "afraid",0
 "afternoon",0
 "afterward",0
+"age",0
 "agenc",0
 "aggriev",0
 "ago",0
@@ -493,17 +713,20 @@
 "alli",0
 "allianc",0
 "allig",0
+"allot",0
 "almost",0
 "alon",0
 "alreadi",0
 "alter",0
 "although",0
 "altogeth",0
+"alway",0
 "amend",0
 "america",0
 "american",0
 "amherstburg",0
 "amherstburgh",0
+"ammunit",0
 "amo",0
 "amongst",0
 "amount",0
@@ -521,9 +744,11 @@
 "anno",0
 "announc",0
 "annoy",0
+"annual",0
 "annuit",0
 "annuiti",0
 "annum",0
+"anoth",0
 "anottowin",0
 "ansdel",0
 "answer",0
@@ -539,11 +764,18 @@
 "anyway",0
 "anywis",0
 "apalachicola",0
+"apart",0
 "apiec",0
 "appar",0
 "apparten",0
 "appeal",0
+<<<<<<< HEAD
+=======
+"appear",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "append",0
+"appertain",0
+"appli",0
 "applic",0
 "apport",0
 "appreci",0
@@ -553,12 +785,18 @@
 "approach",0
 "approb",0
 "appropri",0
+<<<<<<< HEAD
+=======
+"approv",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "approxim",0
+"april",0
 "apt",0
 "aquart",0
 "archi",0
 "arctic",0
 "arduous",0
+"area",0
 "arexus",0
 "argument",0
 "arighwadaga",0
@@ -571,7 +809,9 @@
 "aros",0
 "around",0
 "arpent",0
+"arrang",0
 "arrear",0
+"arriv",0
 "arrow",0
 "arthur",0
 "artifici",0
@@ -582,7 +822,9 @@
 "ash",0
 "ashewasega",0
 "asheweig",0
+"asid",0
 "ask",0
+"assembl",0
 "assent",0
 "assidu",0
 "assiginock",0
@@ -592,6 +834,7 @@
 "associ",0
 "assort",0
 "assumpt",0
+"assur",0
 "ataweetsera",0
 "athabasca",0
 "athabaska",0
@@ -609,6 +852,7 @@
 "augustus",0
 "auspic",0
 "austin",0
+"author",0
 "autumn",0
 "aux",0
 "avail",0
@@ -618,16 +862,20 @@
 "avoid",0
 "avoin",0
 "await",0
+"away",0
 "awe",0
 "awrey",0
 "axe",0
 "aylmer",0
 "babi",0
+"back",0
 "backward",0
 "bad",0
 "baggag",0
 "bald",0
 "ball",0
+"band",0
+"bank",0
 "bant",0
 "baptist",0
 "bar",0
@@ -649,6 +897,7 @@
 "battleford",0
 "baypenetangushen",0
 "beach",0
+"bear",0
 "beatti",0
 "beauti",0
 "beaver",0
@@ -660,6 +909,10 @@
 "beg",0
 "began",0
 "begun",0
+<<<<<<< HEAD
+=======
+"behav",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "behaviour",0
 "behind",0
 "behoff",0
@@ -684,6 +937,7 @@
 "birch",0
 "bird",0
 "biscotas",0
+"bishop",0
 "black",0
 "blackfeet",0
 "blackfoot",0
@@ -715,6 +969,8 @@
 "bostwick",0
 "bottom",0
 "bounc",0
+"bound",0
+"bounti",0
 "bow",0
 "bowman",0
 "boy",0
@@ -738,6 +994,7 @@
 "britan",0
 "britannica",0
 "britannick",0
+"british",0
 "brittan",0
 "brittanick",0
 "brittannick",0
@@ -780,6 +1037,7 @@
 "calcul",0
 "calf",0
 "calico",0
+"call",0
 "calm",0
 "came",0
 "camp",0
@@ -787,6 +1045,10 @@
 "campbel",0
 "campfir",0
 "campion",0
+<<<<<<< HEAD
+=======
+"can",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "canadian",0
 "canard",0
 "cancel",0
@@ -808,10 +1070,15 @@
 "carlton",0
 "carnard",0
 "carpent",0
+"carri",0
 "carriag",0
 "carrier",0
 "cart",0
 "case",0
+<<<<<<< HEAD
+=======
+"cash",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "castl",0
 "castorum",0
 "cat",0
@@ -854,6 +1121,7 @@
 "charg",0
 "chariti",0
 "charter",0
+"chas",0
 "chatahouche",0
 "chatelain",0
 "chatham",0
@@ -923,9 +1191,12 @@
 "columbia",0
 "combin",0
 "comfort",0
+"command",0
+"commenc",0
 "comment",0
 "commerc",0
 "commerci",0
+"commiss",0
 "commissari",0
 "commission",0
 "commit",0
@@ -933,9 +1204,11 @@
 "commod",0
 "commodi",0
 "commonwealth",0
+"communic",0
 "communiti",0
 "commut",0
 "compact",0
+"compani",0
 "companion",0
 "compar",0
 "compel",0
@@ -958,10 +1231,13 @@
 "conclus",0
 "concur",0
 "concurr",0
+"condit",0
 "conduc",0
 "confeder",0
+"confer",0
 "confid",0
 "confin",0
+"conform",0
 "congeni",0
 "congress",0
 "connect",0
@@ -969,6 +1245,7 @@
 "conquest",0
 "conroy",0
 "consequ",0
+"consid",0
 "consist",0
 "conspicu",0
 "constabl",0
@@ -982,12 +1259,17 @@
 "content",0
 "contigu",0
 "contin",0
+"continu",0
+"contract",0
 "contrari",0
 "contribut",0
 "contriv",0
+"conven",0
+"conveni",0
 "convent",0
 "convers",0
 "convert",0
+"convinc",0
 "convoy",0
 "cook",0
 "cooper",0
@@ -1009,26 +1291,41 @@
 "couchich",0
 "councillor",0
 "counsel",0
+"count",0
 "counteract",0
 "counti",0
+"cours",0
 "court",0
+<<<<<<< HEAD
+=======
+"coven",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "cover",0
 "cow",0
 "crane",0
 "crawford",0
 "credit",0
 "cree",0
+<<<<<<< HEAD
+=======
+"creek",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "crew",0
 "crime",0
 "crimin",0
 "crocker",0
 "crook",0
 "crosbi",0
+"cross",0
 "crosscut",0
 "crossexamin",0
 "crow",0
 "crowd",0
 "crown",0
+<<<<<<< HEAD
+=======
+"cultiv",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "cumberland",0
 "cure",0
 "current",0
@@ -1045,6 +1342,7 @@
 "darlington",0
 "daughter",0
 "dauphin",0
+"david",0
 "dawson",0
 "daylight",0
 "daystar",0
@@ -1056,8 +1354,11 @@
 "decemb",0
 "decid",0
 "decis",0
+"declar",0
 "decreas",0
 "deduct",0
+"deed",0
+"deem",0
 "deep",0
 "deepli",0
 "deer",0
@@ -1066,12 +1367,18 @@
 "defer",0
 "defin",0
 "definit",0
+<<<<<<< HEAD
+=======
+"degre",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "delawar",0
 "delay",0
 "deleg",0
 "delewar",0
+"deliber",0
 "delight",0
 "delin",0
+"deliv",0
 "demarc",0
 "demonstr",0
 "deni",0
@@ -1102,6 +1409,7 @@
 "destruct",0
 "detail",0
 "detain",0
+"determin",0
 "detroit",0
 "develop",0
 "devolv",0
@@ -1119,6 +1427,7 @@
 "diminut",0
 "dind",0
 "dinorw",0
+"direct",0
 "disabus",0
 "disband",0
 "discharg",0
@@ -1139,22 +1448,32 @@
 "disput",0
 "dissatisfact",0
 "dissatisfi",0
+<<<<<<< HEAD
+=======
+"distanc",0
+"distant",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "distinct",0
 "distinguish",0
 "distress",0
+"distribut",0
 "disturb",0
 "diver",0
 "divest",0
 "divid",0
+"divis",0
 "doctor",0
 "document",0
 "dog",0
 "doghead",0
 "dogrib",0
 "doki",0
+"dollar",0
 "domini",0
 "dominico",0
+"dominion",0
 "donald",0
+"done",0
 "door",0
 "dorchest",0
 "doth",0
@@ -1171,6 +1490,10 @@
 "drive",0
 "drunken",0
 "duck",0
+<<<<<<< HEAD
+=======
+"due",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "duli",0
 "duncan",0
 "dunda",0
@@ -1193,11 +1516,17 @@
 "earnest",0
 "eas",0
 "easement",0
+<<<<<<< HEAD
+=======
+"east",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "eastern",0
 "eastward",0
 "ecart",0
+"edg",0
 "edgar",0
 "edmonton",0
+"educ",0
 "edward",0
 "effect",0
 "effectu",0
@@ -1206,6 +1535,10 @@
 "eighteen",0
 "eighteenth",0
 "eighth",0
+<<<<<<< HEAD
+=======
+"eighti",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "eighton",0
 "eightseven",0
 "eightychain",0
@@ -1221,12 +1554,14 @@
 "elbow",0
 "elect",0
 "electedmissabay",0
+"eleven",0
 "eleventh",0
 "elgin",0
 "elizabeth",0
 "ellic",0
 "elm",0
 "eloqu",0
+"elsewher",0
 "embarrass",0
 "emblem",0
 "embodi",0
@@ -1235,8 +1570,12 @@
 "emperor",0
 "emphas",0
 "employ",0
+<<<<<<< HEAD
 "empow",0
 "empti",0
+=======
+"enabl",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "enact",0
 "encamp",0
 "enclos",0
@@ -1253,12 +1592,18 @@
 "enfeof",0
 "enfeoff",0
 "enforc",0
+<<<<<<< HEAD
+=======
+"engag",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "engin",0
 "england",0
 "enhanc",0
 "enjoin",0
+"enjoy",0
 "enlarg",0
 "enlighten",0
+"enough",0
 "enquir",0
 "enquiri",0
 "enrol",0
@@ -1284,14 +1629,30 @@
 "eqwan",0
 "erad",0
 "erect",0
+<<<<<<< HEAD
+=======
+"eri",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "erron",0
 "error",0
 "esau",0
 "escort",0
 "escunnisep",0
+<<<<<<< HEAD
+=======
+"especi",0
+"esq",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "esqr",0
 "esquimalt",0
+"esquir",0
 "essenti",0
+<<<<<<< HEAD
+=======
+"establish",0
+"estat",0
+"estim",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "eta",0
 "etc",0
 "etienn",0
@@ -1310,16 +1671,30 @@
 "exagger",0
 "exalt",0
 "examin",0
+<<<<<<< HEAD
 "exceed",0
+=======
+"excel",0
+"except",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "exchang",0
 "excit",0
 "exclud",0
 "exclus",0
+<<<<<<< HEAD
+=======
+"execut",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "executor",0
 "exempt",0
 "exercis",0
 "exert",0
 "exhibit",0
+<<<<<<< HEAD
+=======
+"exist",0
+"expect",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "expedi",0
 "expedit",0
 "expediti",0
@@ -1333,6 +1708,7 @@
 "explan",0
 "explor",0
 "expos",0
+"express",0
 "expressli",0
 "extens",0
 "extent",0
@@ -1342,6 +1718,7 @@
 "extol",0
 "extra",0
 "extract",0
+"extrem",0
 "eyr",0
 "face",0
 "facil",0
@@ -1351,18 +1728,25 @@
 "factori",0
 "fafard",0
 "fail",0
+"fair",0
 "fairford",0
 "fall",0
 "fallen",0
 "fals",0
+"famili",0
 "familiar",0
 "familiesin",0
 "familiesreserv",0
 "familiessuch",0
 "famin",0
+<<<<<<< HEAD
+=======
+"far",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "farm",0
 "farmer",0
 "farquharson",0
+"favour",0
 "fawn",0
 "fear",0
 "feast",0
@@ -1370,6 +1754,7 @@
 "februari",0
 "feder",0
 "fee",0
+"feel",0
 "feet",0
 "fellow",0
 "feloni",0
@@ -1382,6 +1767,7 @@
 "fifteenth",0
 "fifth",0
 "fifthnamassin",0
+"fifti",0
 "fiftyeight",0
 "fiftyf",0
 "fiftyfifth",0
@@ -1395,6 +1781,7 @@
 "fiftythre",0
 "fight",0
 "figur",0
+"file",0
 "fill",0
 "final",0
 "financi",0
@@ -1411,6 +1798,10 @@
 "fitzgerald",0
 "fivewith",0
 "fix",0
+<<<<<<< HEAD
+=======
+"flag",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "flamborough",0
 "flat",0
 "fli",0
@@ -1420,19 +1811,28 @@
 "flourish",0
 "flow",0
 "foll",0
+"follow",0
 "fond",0
 "food",0
 "foot",0
 "forbid",0
+"forc",0
 "ford",0
+"forego",0
 "foreman",0
 "forenoon",0
 "foreshor",0
+"forest",0
 "forfeit",0
 "forgiven",0
 "forgo",0
+"fork",0
+"form",0
 "formal",0
+"former",0
+"forth",0
 "forthwith",0
+"forti",0
 "fortun",0
 "fortyeight",0
 "fortyf",0
@@ -1442,6 +1842,7 @@
 "fortythre",0
 "fortytwo",0
 "forward",0
+"found",0
 "fourpenc",0
 "fourteen",0
 "fourteenth",0
@@ -1458,6 +1859,7 @@
 "fraught",0
 "frederick",0
 "freehold",0
+"freeli",0
 "frenchman",0
 "frere",0
 "friday",0
@@ -1476,11 +1878,18 @@
 "fuca",0
 "fuel",0
 "fugit",0
+"fulfil",0
+"full",0
+"fulli",0
 "function",0
 "fund",0
 "fur",0
 "furbear",0
 "furnish",0
+<<<<<<< HEAD
+=======
+"futur",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "gabriel",0
 "game",0
 "garden",0
@@ -1517,8 +1926,14 @@
 "gordon",0
 "gore",0
 "got",0
+<<<<<<< HEAD
 "govr",0
 "grace",0
+=======
+"govern",0
+"govr",0
+"gracious",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "grade",0
 "grain",0
 "grand",0
@@ -1588,6 +2003,11 @@
 "hay",0
 "hayland",0
 "hazard",0
+<<<<<<< HEAD
+=======
+"head",0
+"headman",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "headmen",0
 "headquart",0
 "headwat",0
@@ -1599,14 +2019,25 @@
 "heavi",0
 "height",0
 "heightofland",0
+"held",0
 "help",0
 "henceforth",0
 "henri",0
 "herbert",0
+"herein",0
 "hereinabov",0
+<<<<<<< HEAD
 "hereof",0
 "hereto",0
 "heretofor",0
+=======
+"hereinaft",0
+"hereinbefor",0
+"hereof",0
+"hereto",0
+"heretofor",0
+"hereund",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "herewith",0
 "heron",0
 "hesit",0
@@ -1627,8 +2058,12 @@
 "holiday",0
 "holland",0
 "holm",0
+"home",0
 "hon",0
+"honor",0
+"honour",0
 "hook",0
+"hope",0
 "hopson",0
 "hors",0
 "horsepow",0
@@ -1640,7 +2075,12 @@
 "houseboat",0
 "howard",0
 "howev",0
+<<<<<<< HEAD
+=======
+"hudson",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "humbl",0
+"hunt",0
 "hunter",0
 "hurri",0
 "hymn",0
@@ -1655,6 +2095,10 @@
 "illdispos",0
 "imaginari",0
 "immedi",0
+<<<<<<< HEAD
+=======
+"immigr",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "impedi",0
 "imperfect",0
 "implement",0
@@ -1662,10 +2106,10 @@
 "import",0
 "impos",0
 "imposit",0
-"imposs",0
 "impoverish",0
 "impow",0
 "impress",0
+"improv",0
 "inaccess",0
 "inadvert",0
 "inasmuch",0
@@ -1688,11 +2132,13 @@
 "indig",0
 "indirect",0
 "indisposit",0
+"individu",0
 "indulg",0
 "industri",0
 "infer",0
 "influenc",0
 "influenti",0
+"infring",0
 "inherit",0
 "initi",0
 "injur",0
@@ -1704,20 +2150,37 @@
 "insert",0
 "insist",0
 "inspect",0
+<<<<<<< HEAD
+=======
+"inspector",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "instanc",0
 "instant",0
 "instead",0
 "institut",0
+"instruct",0
+"instrument",0
 "insult",0
 "intellect",0
 "intellig",0
+<<<<<<< HEAD
 "interchang",0
 "intercours",0
 "interf",0
+=======
+"intend",0
+"intent",0
+"interchang",0
+"intercours",0
+"interf",0
+"interfer",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "interior",0
 "intern",0
+"interpret",0
 "interprovinci",0
 "interrupt",0
+"intersect",0
 "interv",0
 "interven",0
 "interview",0
@@ -1746,6 +2209,7 @@
 "isl",0
 "islet",0
 "isol",0
+"issu",0
 "item",0
 "itmi",0
 "iuinway",0
@@ -1765,17 +2229,28 @@
 "jesus",0
 "job",0
 "joe",0
+"john",0
 "johnson",0
 "johnstown",0
 "join",0
 "jone",0
+<<<<<<< HEAD
+=======
+"joseph",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "journey",0
 "juan",0
 "judg",0
 "judicatur",0
 "judici",0
 "junction",0
+<<<<<<< HEAD
+=======
+"june",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "jurisdict",0
+"just",0
+"justic",0
 "justifi",0
 "kabratsiwaybiyeb",0
 "kageshewawetung",0
@@ -1817,6 +2292,7 @@
 "kiminitiquia",0
 "kinaybicoinini",0
 "kincardin",0
+"kind",0
 "kindest",0
 "kingston",0
 "kinosayo",0
@@ -1844,21 +2320,33 @@
 "laid",0
 "laird",0
 "lamabinicon",0
+<<<<<<< HEAD
 "larger",0
+=======
+"larg",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "largest",0
+"last",0
 "lastment",0
 "latchford",0
+"late",0
 "later",0
 "latitud",0
 "latter",0
 "laurent",0
 "lawmak",0
 "lawrenc",0
+"lay",0
+"lead",0
 "leader",0
 "leagu",0
 "learn",0
 "leas",0
 "least",0
+<<<<<<< HEAD
+=======
+"leav",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "lebrecqu",0
 "led",0
 "leech",0
@@ -1884,10 +2372,12 @@
 "lieutenantgovernor",0
 "life",0
 "light",0
+"like",0
 "likewis",0
 "lime",0
 "limitsal",0
 "lincoln",0
+"line",0
 "link",0
 "liquor",0
 "liskeard",0
@@ -1895,6 +2385,10 @@
 "listen",0
 "litani",0
 "littl",0
+<<<<<<< HEAD
+=======
+"live",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "livelihood",0
 "local",0
 "locat",0
@@ -1905,6 +2399,10 @@
 "lofti",0
 "log",0
 "london",0
+<<<<<<< HEAD
+=======
+"long",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "longer",0
 "longitud",0
 "longueil",0
@@ -1924,6 +2422,7 @@
 "love",0
 "low",0
 "lower",0
+"loyal",0
 "loyalti",0
 "lth",0
 "lucki",0
@@ -1953,6 +2452,7 @@
 "mair",0
 "maishequonggai",0
 "maisquaso",0
+"major",0
 "majti",0
 "malcolm",0
 "malcom",0
@@ -1993,6 +2493,7 @@
 "materi",0
 "mattagami",0
 "mattawa",0
+"matter",0
 "matthey",0
 "mattotow",0
 "mauripa",0
@@ -2025,6 +2526,7 @@
 "medicin",0
 "medit",0
 "meemay",0
+"meet",0
 "meganumb",0
 "meindl",0
 "meki",0
@@ -2063,16 +2565,19 @@
 "middl",0
 "midland",0
 "midst",0
+"might",0
 "migrat",0
 "militari",0
 "mill",0
 "miller",0
 "milligan",0
+"million",0
 "minahequosi",0
 "mind",0
 "mine",0
 "miner",0
 "mingl",0
+"minist",0
 "ministr",0
 "minor",0
 "minut",0
@@ -2115,7 +2620,9 @@
 "monopol",0
 "monopoli",0
 "monsieur",0
+"month",0
 "montizambert",0
+"montreal",0
 "monument",0
 "moonia",0
 "moos",0
@@ -2168,8 +2675,10 @@
 "nawash",0
 "ndli",0
 "neac",0
+"near",0
 "nebenaigoch",0
 "necess",0
+"necessari",0
 "necessarysuch",0
 "neck",0
 "need",0
@@ -2191,6 +2700,7 @@
 "net",0
 "never",0
 "nevertheless",0
+"new",0
 "newatchkigigswab",0
 "newfoundland",0
 "newli",0
@@ -2203,6 +2713,7 @@
 "nigh",0
 "night",0
 "niham",0
+"nine",0
 "nineteen",0
 "nineteenth",0
 "nineti",0
@@ -2215,6 +2726,10 @@
 "ninetysix",0
 "ninetythre",0
 "ninetytwo",0
+<<<<<<< HEAD
+=======
+"ninth",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "nipigon",0
 "nipiss",0
 "nochemowena",0
@@ -2230,6 +2745,8 @@
 "norman",0
 "norridgwolk",0
 "northeastern",0
+"norther",0
+"northern",0
 "northernmost",0
 "northumberland",0
 "northward",0
@@ -2261,6 +2778,7 @@
 "oblivion",0
 "obstin",0
 "obstruct",0
+"obtain",0
 "occas",0
 "occasion",0
 "occup",0
@@ -2268,6 +2786,7 @@
 "ocean",0
 "ocheek",0
 "oclock",0
+"octob",0
 "odd",0
 "offenc",0
 "offer",0
@@ -2285,6 +2804,7 @@
 "okemapen",0
 "okemapeness",0
 "okickandawt",0
+"old",0
 "older",0
 "oliv",0
 "omakess",0
@@ -2295,17 +2815,20 @@
 "oningegun",0
 "onnusseraqueta",0
 "ont",0
+"ontario",0
 "ooskinegisk",0
 "oozawekwun",0
 "oper",0
 "opetequoyaws",0
 "opetiguoyaws",0
+"opinion",0
 "opportun",0
 "oppos",0
 "opposit",0
 "option",0
 "oratori",0
 "ordain",0
+"order",0
 "ordin",0
 "ordinari",0
 "ordinarili",0
@@ -2329,6 +2852,10 @@
 "overland",0
 "overlook",0
 "overtaken",0
+<<<<<<< HEAD
+=======
+"owe",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "owen",0
 "owner",0
 "oxen",0
@@ -2365,6 +2892,7 @@
 "parliament",0
 "parri",0
 "parsonag",0
+"particular",0
 "partridg",0
 "pascal",0
 "passag",0
@@ -2415,12 +2943,14 @@
 "pentchartain",0
 "pepper",0
 "peppercorn",0
+"per",0
 "peregrin",0
 "perfect",0
 "perhap",0
 "period",0
 "perman",0
 "permit",0
+"person",0
 "personnel",0
 "perth",0
 "pestil",0
@@ -2448,7 +2978,12 @@
 "pitt",0
 "plain",0
 "plan",0
+<<<<<<< HEAD
+=======
+"plant",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "plantat",0
+"pleas",0
 "pleasant",0
 "pleasur",0
 "pledg",0
@@ -2457,6 +2992,7 @@
 "plot",0
 "plough",0
 "plunder",0
+"point",0
 "pokquawr",0
 "pole",0
 "polic",0
@@ -2470,8 +3006,15 @@
 "popul",0
 "porcupin",0
 "port",0
+<<<<<<< HEAD
+=======
+"portag",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "posit",0
 "possessor",0
+"possibl",0
+"post",0
+"poster",0
 "postmark",0
 "postpon",0
 "potakquan",0
@@ -2495,16 +3038,26 @@
 "prejud",0
 "prejudic",0
 "preliminari",0
+"premis",0
 "presbyteri",0
 "prescrib",0
+<<<<<<< HEAD
+=======
+"presenc",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "preserv",0
 "press",0
 "presum",0
 "pretenc",0
+<<<<<<< HEAD
+=======
+"pretend",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "pretti",0
 "prevail",0
 "prevent",0
 "previous",0
+"price",0
 "priest",0
 "princ",0
 "principl",0
@@ -2515,10 +3068,12 @@
 "pro",0
 "probabl",0
 "procedur",0
+"proceed",0
 "proclam",0
 "procur",0
 "product",0
 "profess",0
+"profit",0
 "profound",0
 "programm",0
 "progress",0
@@ -2527,6 +3082,10 @@
 "pronounc",0
 "proof",0
 "proper",0
+<<<<<<< HEAD
+=======
+"proport",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "proportion",0
 "proposit",0
 "proprietari",0
@@ -2534,7 +3093,10 @@
 "prosper",0
 "proud",0
 "provench",0
+"provid",0
 "provinci",0
+"provis",0
+"provision",0
 "proviso",0
 "provost",0
 "puan",0
@@ -2552,6 +3114,7 @@
 "pursuit",0
 "puscoo",0
 "push",0
+"put",0
 "putt",0
 "qacloch",0
 "quaikeegon",0
@@ -2562,7 +3125,11 @@
 "quarter",0
 "quarterpast",0
 "quatchequan",0
+<<<<<<< HEAD
 "quebec",0
+=======
+"queen",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "quekijick",0
 "quenepenon",0
 "quick",0
@@ -2593,6 +3160,7 @@
 "rata",0
 "rate",0
 "ratif",0
+"ratifi",0
 "ravin",0
 "rawdon",0
 "rdli",0
@@ -2605,6 +3173,7 @@
 "reap",0
 "reaper",0
 "rear",0
+"reason",0
 "reassembl",0
 "recent",0
 "recept",0
@@ -2612,9 +3181,15 @@
 "recit",0
 "recogn",0
 "recognit",0
+<<<<<<< HEAD
+=======
+"recommend",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "recompens",0
+"record",0
 "recours",0
 "rectangl",0
+"red",0
 "redeem",0
 "redress",0
 "reduc",0
@@ -2630,9 +3205,14 @@
 "regist",0
 "regni",0
 "regret",0
+<<<<<<< HEAD
+=======
+"regul",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "regular",0
 "rehears",0
 "reid",0
+"reign",0
 "rein",0
 "reiter",0
 "relat",0
@@ -2643,6 +3223,7 @@
 "religi",0
 "religion",0
 "relinquish",0
+"remaind",0
 "remark",0
 "rememb",0
 "remitt",0
@@ -2654,6 +3235,8 @@
 "rendezv",0
 "renew",0
 "renfrew",0
+"renounc",0
+"rent",0
 "renunci",0
 "repair",0
 "repeat",0
@@ -2661,13 +3244,20 @@
 "repli",0
 "repos",0
 "represent",0
+"request",0
+"requir",0
 "requisit",0
 "resembl",0
+"reserv",0
 "residu",0
 "resolut",0
 "resort",0
 "resourc",0
 "respectmi",0
+<<<<<<< HEAD
+=======
+"respons",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "rest",0
 "restitut",0
 "restrict",0
@@ -2691,6 +3281,7 @@
 "rifl",0
 "righteous",0
 "rise",0
+"river",0
 "rivir",0
 "road",0
 "robberi",0
@@ -2750,6 +3341,10 @@
 "saskatchewan",0
 "satisfactori",0
 "satisfi",0
+<<<<<<< HEAD
+=======
+"saturday",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "saugeen",0
 "sauk",0
 "saukin",0
@@ -2757,6 +3352,7 @@
 "saulteaux",0
 "saw",0
 "sawainchik",0
+"say",0
 "scale",0
 "scarc",0
 "scatter",0
@@ -2770,13 +3366,20 @@
 "scrip",0
 "scrofula",0
 "scyth",0
+"sea",0
+"seal",0
 "seam",0
 "search",0
 "season",0
 "seat",0
 "sec",0
+"second",0
 "secretari",0
 "section",0
+<<<<<<< HEAD
+=======
+"secur",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "see",0
 "seed",0
 "seedgrain",0
@@ -2790,9 +3393,11 @@
 "seneca",0
 "senior",0
 "sens",0
+"sent",0
 "sentenc",0
 "sentiment",0
 "separ",0
+"septemb",0
 "seri",0
 "serpent",0
 "serv",0
@@ -2804,6 +3409,10 @@
 "seventeen",0
 "seventeenth",0
 "seventh",0
+<<<<<<< HEAD
+=======
+"seventi",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "seventyeight",0
 "seventyf",0
 "seventyfour",0
@@ -2813,6 +3422,7 @@
 "seventysix",0
 "seventythre",0
 "seventytwo",0
+"sever",0
 "severalti",0
 "severn",0
 "seybold",0
@@ -2841,15 +3451,26 @@
 "shenetahguw",0
 "sherlock",0
 "shewitagan",0
+"shewn",0
 "shinguacous",0
 "ship",0
 "shipwreck",0
 "shoal",0
 "short",0
 "shot",0
+<<<<<<< HEAD
 "shown",0
 "sicama",0
 "sifton",0
+=======
+"show",0
+"shown",0
+"sicama",0
+"sick",0
+"side",0
+"sifton",0
+"sign",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "signatur",0
 "signifi",0
 "silver",0
@@ -2870,6 +3491,11 @@
 "sirw",0
 "sister",0
 "sit",0
+<<<<<<< HEAD
+=======
+"site",0
+"six",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "sixmil",0
 "sixpenc",0
 "sixteen",0
@@ -2902,6 +3528,10 @@
 "snyder",0
 "socal",0
 "societi",0
+<<<<<<< HEAD
+=======
+"soever",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "soil",0
 "soldier",0
 "sole",0
@@ -2913,6 +3543,7 @@
 "someth",0
 "sometim",0
 "somewhat",0
+"soon",0
 "sooner",0
 "sot",0
 "sought",0
@@ -2921,8 +3552,13 @@
 "souri",0
 "sousonc",0
 "sousons",0
+"southeast",0
 "southeastern",0
 "southeastward",0
+<<<<<<< HEAD
+=======
+"souther",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "southern",0
 "southforti",0
 "southward",0
@@ -2931,12 +3567,14 @@
 "southwesternmost",0
 "southwestward",0
 "souwarraghijojiana",0
+"sovereign",0
 "sovereignti",0
 "sow",0
 "space",0
 "spade",0
 "spanish",0
 "speak",0
+"special",0
 "specifi",0
 "speech",0
 "speechmak",0
@@ -2967,6 +3605,10 @@
 "stanley",0
 "start",0
 "starvat",0
+<<<<<<< HEAD
+=======
+"state",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "statement",0
 "station",0
 "statu",0
@@ -2980,6 +3622,7 @@
 "step",0
 "sterl",0
 "still",0
+"stipul",0
 "stli",0
 "stock",0
 "stockrais",0
@@ -2995,6 +3638,11 @@
 "stoughton",0
 "straggler",0
 "straight",0
+<<<<<<< HEAD
+=======
+"strait",0
+"stream",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "street",0
 "streight",0
 "strength",0
@@ -3007,6 +3655,11 @@
 "struck",0
 "sturgeon",0
 "subaltern",0
+<<<<<<< HEAD
+=======
+"submiss",0
+"submit",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "subordin",0
 "subscript",0
 "subsequ",0
@@ -3019,6 +3672,8 @@
 "suffici",0
 "suggest",0
 "suicid",0
+"suit",0
+"suitabl",0
 "summari",0
 "summer",0
 "summit",0
@@ -3035,6 +3690,10 @@
 "sure",0
 "surpris",0
 "surround",0
+<<<<<<< HEAD
+=======
+"survey",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "surveyor",0
 "susquehana",0
 "sustain",0
@@ -3076,12 +3735,14 @@
 "tell",0
 "temagami",0
 "tempor",0
+"ten",0
 "tend",0
 "tenement",0
 "tenor",0
 "tenth",0
 "teppais",0
 "termin",0
+"territori",0
 "testifi",0
 "testimoni",0
 "thame",0
@@ -3089,11 +3750,20 @@
 "thee",0
 "thenceforth",0
 "thereabout",0
+<<<<<<< HEAD
 "therebi",0
 "therefrom",0
+=======
+"thereaft",0
+"therebi",0
+"therefrom",0
+"therein",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "thereofand",0
+"thereon",0
 "thereout",0
 "thereunto",0
+"thereupon",0
 "therewith",0
 "thessalon",0
 "thick",0
@@ -3111,6 +3781,10 @@
 "thirtyfour",0
 "thirtyseventh",0
 "thirtysix",0
+<<<<<<< HEAD
+=======
+"thirtythre",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "thirtytwo",0
 "thli",0
 "tho",0
@@ -3119,6 +3793,10 @@
 "thou",0
 "though",0
 "thought",0
+<<<<<<< HEAD
+=======
+"three",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "threequart",0
 "threw",0
 "thro",0
@@ -3131,9 +3809,11 @@
 "till",0
 "timiskam",0
 "tire",0
+"titl",0
 "toaccompani",0
 "tobacco",0
 "tobago",0
+"togeth",0
 "token",0
 "tom",0
 "tongu",0
@@ -3160,16 +3840,24 @@
 "tranquil",0
 "transact",0
 "transcontinent",0
+"transfer",0
 "translat",0
 "transmit",0
 "transmittedand",0
 "transport",0
 "trap",0
 "trapper",0
+"travel",0
 "travers",0
 "treacheri",0
 "treason",0
+<<<<<<< HEAD
 "treatment",0
+=======
+"treat",0
+"treatment",0
+"tree",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "tremayn",0
 "trend",0
 "trent",0
@@ -3180,12 +3868,17 @@
 "trip",0
 "tripmen",0
 "troop",0
+<<<<<<< HEAD
+=======
+"troubl",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "trout",0
 "truck",0
 "truckhous",0
 "trudel",0
 "true",0
 "trunk",0
+"trust",0
 "tuesday",0
 "tuli",0
 "tummago",0
@@ -3195,10 +3888,15 @@
 "turtl",0
 "twelfh",0
 "twelfth",0
+"twenti",0
 "twentieth",0
 "twentychain",0
 "twentyeight",0
 "twentyeighth",0
+<<<<<<< HEAD
+=======
+"twentyf",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "twentyfifth",0
 "twentyfour",0
 "twentyfourth",0
@@ -3212,6 +3910,8 @@
 "twentysixth",0
 "twentythird",0
 "twentythre",0
+"twentytwo",0
+"twine",0
 "twothird",0
 "ultimo",0
 "unabl",0
@@ -3223,6 +3923,7 @@
 "unconced",0
 "uncultiv",0
 "undealt",0
+"undersign",0
 "understand",0
 "understood",0
 "undertak",0
@@ -3259,6 +3960,7 @@
 "unusu",0
 "unwilling",0
 "unwis",0
+"upper",0
 "upward",0
 "urg",0
 "uriah",0
@@ -3270,6 +3972,10 @@
 "vaccin",0
 "valid",0
 "valley",0
+<<<<<<< HEAD
+=======
+"valu",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "valuabl",0
 "vanass",0
 "vancouv",0
@@ -3286,7 +3992,9 @@
 "vicin",0
 "victor",0
 "victoria",0
+"view",0
 "vigor",0
+"villag",0
 "vincent",0
 "violent",0
 "virtu",0
@@ -3334,6 +4042,7 @@
 "wapiscow",0
 "wapissejunkissycawpowa",0
 "waquacomick",0
+"war",0
 "ward",0
 "ware",0
 "warpela",0
@@ -3371,6 +4080,9 @@
 "wemyss",0
 "went",0
 "wesley",0
+"wester",0
+"westward",0
+"whatsoev",0
 "wheat",0
 "whenc",0
 "whenev",0
@@ -3410,8 +4122,11 @@
 "winter",0
 "wisdom",0
 "wise",0
+"wish",0
 "withal",0
 "withdraw",0
+"without",0
+"witnesseth",0
 "witnessth",0
 "woman",0
 "women",0
@@ -3419,6 +4134,10 @@
 "woodhous",0
 "woodi",0
 "word",0
+<<<<<<< HEAD
+=======
+"work",0
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 "workshop",0
 "world",0
 "worthi",0
@@ -3441,6 +4160,7 @@
 "zeal",0
 "zealous",0
 "zest",0
+<<<<<<< HEAD
 "say",-0.00897172960449576
 "shore",-0.0121358491194611
 "land",-0.0206331943500391
@@ -3636,3 +4356,78 @@
 "benefit",-1.49212029645223
 "term",-1.51501713127763
 "set",-1.60583716383244
+=======
+"white",-0.00115613254003272
+"fifteen",-0.00191535337534517
+"molest",-0.150138850092289
+"shall",-0.163265598961286
+"also",-0.274971982919277
+"everi",-0.292645658383329
+"given",-0.36728057520191
+"fort",-0.408005400745853
+"treati",-0.439030517832825
+"releas",-0.4592791554627
+"south",-0.462841720670401
+"west",-0.513992538875217
+"place",-0.545563331310864
+"otherwis",-0.547475566230909
+"sum",-0.636310750579672
+"ireland",-0.649531669663978
+"now",-0.803058884860525
+"superintend",-0.863871405065298
+"heredita",-0.988820969050092
+"affair",-1.00100150250438
+"among",-1.00100150250438
+"convey",-1.00100150250438
+"countri",-1.00100150250438
+"desir",-1.00100150250438
+"imposs",-1.00100150250438
+"includ",-1.00100150250438
+"inform",-1.00100150250438
+"known",-1.00100150250438
+"larger",-1.00100150250438
+"limit",-1.00100150250438
+"mani",-1.00100150250438
+"manner",-1.00100150250438
+"may",-1.00100150250438
+"mouth",-1.00100150250438
+"name",-1.00100150250438
+"northwest",-1.00100150250438
+"oblig",-1.00100150250438
+"public",-1.00100150250438
+"remain",-1.00100150250438
+"repres",-1.00100150250438
+"right",-1.00100150250438
+"sale",-1.00100150250438
+"thereof",-1.00100150250438
+"western",-1.00100150250438
+"whatev",-1.00100150250438
+"alien",-1.00100150250438
+"along",-1.00100150250438
+"angl",-1.00100150250438
+"canada",-1.00100150250438
+"child",-1.00100150250438
+"day",-1.00100150250438
+"defend",-1.00100150250438
+"fish",-1.00100150250438
+"hereaft",-1.00100150250438
+"outlet",-1.00100150250438
+"paid",-1.00100150250438
+"possess",-1.00100150250438
+"respect",-1.00100150250438
+"thereto",-1.00100150250438
+"time",-1.00100150250438
+"township",-1.00100150250438
+"written",-1.00100150250438
+"majesti",-1.06452329411066
+"law",-1.09866008581669
+"land",-1.22455228381075
+"accept",-1.26082188863325
+"interest",-1.32950621285002
+"water",-1.33368796095603
+"behalf",-1.33889707599539
+"shore",-1.34611170105416
+"belong",-1.41574134290612
+"deliveri",-1.7077912663468
+"less",-1.7371420860504
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd

@@ -642,7 +642,8 @@ write.csv(
 rf_model <-
   randomForest(as.matrix(dtm_1),
                pc1_scores,
-               ntree = 2000,
+               ntree = 500,
+               maxnodes = 5,
                importance = TRUE)
 
 # Print the model summary to check performance:
@@ -756,18 +757,19 @@ dtrain_1 <- xgb.DMatrix(data = dtm_matrix_1, label = response_vector_1)
 
 # Set parameters for the XGBoost model
 params_1 <- list(
-  objective = "reg:squarederror", # For regression task
-  max_depth = 6, # Maximum depth of the tree
-  eta = 0.3, # Learning rate
-  nthread = 2, # Number of threads to use
-  eval_metric = "rmse" # Evaluation metric
+  objective = "reg:squarederror",
+  max_depth = 5,     # Reduced from  to limit tree depth
+  eta = 0.1,         # Changed from 0.3 to 0.1
+  nthread = 2,
+  eval_metric = "rmse",
+  alpha = 1,         # L1 regularization term
+  lambda = 1         # L2 regularization term
 )
 
-# Train the XGBoost model
 xgb_model_1 <- xgb.train(
   params = params_1,
   data = dtrain_1,
-  nrounds = 2000 # Number of boosting rounds
+  nrounds = 100       # Changed from 2000 to 100
 )
 
 # Get feature importance scores
@@ -799,12 +801,23 @@ importance_df_1 <- read.csv(  "./00_documents/visuals/term_importance_xgboost_PC
 
 ### **Basic Random Forest Model – PC2:**
 
+<<<<<<< HEAD
 ```{r rand_forest_pc2}
+=======
+ntree = 2000,
+
+importance = TRUE)
+
+```{r}
+>>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 # Fit the Random Forest model using PC2 scores:
-rf_model_pc2 <- randomForest(as.matrix(dtm_1),
-                             pc2_scores,
-                             ntree = 2000,
-                             importance = TRUE)
+rf_model_pc2 <- randomForest(
+  as.matrix(dtm_1),
+  pc2_scores,
+  ntree = 500,
+  maxnodes = 5,
+  importance = TRUE
+)
 
 # Print the model summary to check performance:
 print(rf_model_pc2)
@@ -915,18 +928,20 @@ dtrain_2 <- xgb.DMatrix(data = dtm_matrix_2, label = response_vector_2)
 
 # Set parameters for the XGBoost model
 params_2 <- list(
-  objective = "reg:squarederror", # For regression task
-  max_depth = 6, # Maximum depth of the tree
-  eta = 0.3, # Learning rate
-  nthread = 2, # Number of threads to use
-  eval_metric = "rmse" # Evaluation metric
+  objective = "reg:squarederror",
+  max_depth = 5,     # Reduced from  to limit tree depth
+  eta = 0.1,         # Changed from 0.3 to 0.1
+  nthread = 2,
+  eval_metric = "rmse",
+  alpha = 1,         # L1 regularization term
+  lambda = 1         # L2 regularization term
 )
 
 # Train the XGBoost model
 xgb_model_2 <- xgb.train(
   params = params_2,
   data = dtrain_2,
-  nrounds = 50 # Number of boosting rounds
+  nrounds = 100 # Number of boosting rounds
 )
 
 # Get feature importance scores
