@@ -22,6 +22,7 @@ library(randomForest)
 library(xgboost)
 library(caret)
 library(stringr)
+library(kableExtra)
 
 # change global options 
 knitr::opts_chunk$set(
@@ -507,6 +508,49 @@ write.csv(
 )
 ```
 
+```{r positive_word_stems_kpc1}
+terms_info_aggregated_douglas <- read_excel("00_documents/visuals/douglas_adjustment/terms_info_aggregated_douglas.xlsx")
+
+# Correlations - KPC1
+
+## * Positive ---- 
+kpc1_positive_word_stems <- terms_info_aggregated_douglas %>% 
+  dplyr::select(12:14) %>% 
+  dplyr::rename(Positive_Term = 1, Frequency = 2, Correlation = 3) %>% 
+  dplyr::slice(1:39) %>% 
+  data.frame() %>% 
+  dplyr::mutate(Correlation = as.numeric(as.character(Correlation))) %>% 
+  dplyr::arrange(desc(Correlation)) %>% 
+  dplyr::mutate(Correlation = round(x = Correlation, digits = 3))
+
+kpc1_positive_word_stems %>% 
+  kbl(caption = "<b>Table N</b> <br><i>KPC1 - Positive Word Stems</i>", 
+      col.names = c("Positive Term", "Term Frequncy", "Correlation")) %>%
+  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
+  scroll_box(width = "500px", height = "500px") %>% 
+  footnote(general = "Here is a general comments of the table. ")
+
+## * Negative ---- 
+
+kpc1_negative_word_stems <- terms_info_aggregated_douglas %>% 
+  dplyr::select(16:18) %>% 
+  dplyr::rename(Negative_Term = 1, Frequency = 2, Correlation = 3) %>% 
+  dplyr::slice(1:50) %>% 
+  data.frame() %>% 
+  dplyr::mutate(Correlation = as.numeric(as.character(Correlation))) %>% 
+  dplyr::arrange(desc(Correlation)) %>% 
+  dplyr::mutate(Correlation = round(x = Correlation, digits = 3))
+
+kpc1_negative_word_stems %>% 
+  kbl(caption = "<b>Table N</b> <br><i>KPC1 - Negative Word Stems</i>",
+      col.names = c("Negative Term", "Term Frequncy", "Correlation")) %>%
+  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
+  scroll_box(width = "500px", height = "500px") %>% 
+  footnote(general = "Here is a general comments of the table. ")
+
+```
+
+
 ### Correlations – PC2 (.csv)
 
 ```{r compute_pc2}
@@ -551,6 +595,47 @@ write.csv(
   "./00_documents/visuals/correlations_PC2.csv",
   row.names = FALSE
 )
+```
+
+```{r}
+
+# Correlations - KPC2
+
+## * Positive ---- 
+kpc2_pos_word_stems <- terms_info_aggregated_douglas %>% 
+  dplyr::slice(52:106) %>% 
+  dplyr::select(12:14) %>% 
+  dplyr::rename(Positive_Term = 1, Frequency = 2, Correlation = 3) %>% 
+  data.frame() %>% 
+  dplyr::slice(2:55) %>% 
+  dplyr::mutate(Correlation = as.numeric(as.character(Correlation))) %>% 
+  dplyr::arrange(desc(Correlation)) %>% 
+  dplyr::mutate(Correlation = round(x = Correlation, digits = 3))
+
+kpc2_pos_word_stems %>% 
+  kbl(caption = "<b>Table N</b> <br><i>KPC2 - Positive Word Stems</i>", 
+      col.names = c("Positive Term", "Term Frequncy", "Correlation")) %>%
+  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
+  scroll_box(width = "500px", height = "500px") %>% 
+  footnote(general = "Here is a general comments of the table. ")
+
+## * Negative ---- 
+kpc2_neg_word_stems <- terms_info_aggregated_douglas %>% 
+  dplyr::slice(52:106) %>% 
+  dplyr::select(16:18) %>% 
+  dplyr::rename(Positive_Term = 1, Frequency = 2, Correlation = 3) %>% 
+  data.frame() %>% 
+  dplyr::slice(2:50) %>% 
+  dplyr::mutate(Correlation = as.numeric(as.character(Correlation))) %>% 
+  dplyr::arrange(desc(Correlation)) %>% 
+  dplyr::mutate(Correlation = round(x = Correlation, digits = 3))
+
+kpc2_neg_word_stems %>% 
+  kbl(caption = "<b>Table N</b> <br><i>KPC2 - Negative Word Stems</i>", 
+      col.names = c("Positive Term", "Term Frequncy", "Correlation")) %>%
+  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
+  scroll_box(width = "500px", height = "500px") %>% 
+  footnote(general = "Here is a general comments of the table. ")
 ```
 
 ## [Random Forest Algorithm]{.underline} (p. 89)
@@ -1136,6 +1221,7 @@ biplot
 # Save the interactive biplot as an HTML file
 saveWidget(biplot, "biplot_canadian_indigenous_treaties.html")
 ```
+
 
 ### **Principal Components Table:**
 
