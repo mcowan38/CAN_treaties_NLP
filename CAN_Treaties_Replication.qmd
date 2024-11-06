@@ -486,7 +486,7 @@ print(pca_scores_df)
 # Output the PCA scores to a CSV file:
 write.csv(
   pca_scores_df,
-  "./00_documents/visuals/KPCA_scores_comparison.csv",
+  "./00_documents/visuals/KPCA_scores_comparison_douglas.csv",
   row.names = FALSE
 )
 ```
@@ -533,7 +533,7 @@ print(results_df)
 # Output results to a .csv file:
 write.csv(
   results_df,
-  "./00_documents/visuals/correlations_PC1.csv",
+  "./00_documents/visuals/correlations_PC1_douglas.csv",
   row.names = FALSE
 )
 ```
@@ -579,7 +579,7 @@ print(results_df_pc2)
 # Output results to a .csv file:
 write.csv(
   results_df_pc2,
-  "./00_documents/visuals/correlations_PC2.csv",
+  "./00_documents/visuals/correlations_PC2_douglas.csv",
   row.names = FALSE
 )
 ```
@@ -643,7 +643,7 @@ print(top_terms)
 # Optionally, output results to .csv file:
 write.csv(
   importance_df_pc1,
-  "./00_documents/visuals/term_importance_PC1.csv",
+  "./00_documents/visuals/term_importance_PC1_douglas.csv",
   row.names = FALSE
 )
 ```
@@ -761,7 +761,7 @@ print(top_terms_1)
 # Optionally, output results to .csv file:
 write.csv(
   importance_df_1,
-  "./00_documents/visuals/term_importance_xgboost_PC1.csv",
+  "./00_documents/visuals/term_importance_xgboost_PC1_douglas.csv",
   row.names = FALSE
 )
 ```
@@ -805,7 +805,7 @@ print(top_terms_pc2)
 # Optionally, output results to .csv file:
 write.csv(
   importance_df_pc2,
-  "./00_documents/visuals/term_importance_PC2.csv",
+  "./00_documents/visuals/term_importance_PC2_douglas.csv",
   row.names = FALSE
 )
 ```
@@ -925,7 +925,7 @@ print(top_terms_xgb_2)
 # Optionally, output results to .csv file:
 write.csv(
   importance_df_xgb_2,
-  "./00_documents/visuals/term_importance_xgboost_PC2.csv",
+  "./00_documents/visuals/term_importance_xgboost_PC2_douglas.csv",
   row.names = FALSE
 )
 ```
@@ -1218,7 +1218,7 @@ search_term_in_corpus <- function(FULL_corp, search_term) {
 
 # Searching for "punish" and its derivatives
 found_sentences <-
-  search_term_in_corpus(doc_texts = FULL_corp, search_term = "Indian")
+  search_term_in_corpus(FULL_corp = FULL_corp, search_term = "children")
 
 # Output found sentences
 print(found_sentences)
