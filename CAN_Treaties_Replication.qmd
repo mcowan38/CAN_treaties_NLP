@@ -672,7 +672,7 @@ write.csv(
 ```
 
 ```{r import_term_importance_pc1}
-importance_df_pc1 <- read.csv("00_documents/visuals/term_importance_PC1.csv")
+importance_df_pc1 <- read.csv("00_documents/visuals/term_importance_PC1_douglas.csv")
 ```
 
 ### **XGBoost Model Tuning – PC1:**
@@ -765,7 +765,6 @@ params_1 <- list(
   alpha = 1,         # L1 regularization term
   lambda = 1         # L2 regularization term
 )
-
 xgb_model_1 <- xgb.train(
   params = params_1,
   data = dtrain_1,
@@ -794,22 +793,14 @@ write.csv(
 ```
 
 ```{r import_term_importance_xgboost_pc1}
-importance_df_1 <- read.csv(  "./00_documents/visuals/term_importance_xgboost_PC1.csv")
+importance_df_1 <- read.csv(  "./00_documents/visuals/term_importance_xgboost_PC1_douglas.csv")
 ```
 
 ## [**Principal Component 2**]{.underline}
 
 ### **Basic Random Forest Model – PC2:**
 
-<<<<<<< HEAD
-```{r rand_forest_pc2}
-=======
-ntree = 2000,
-
-importance = TRUE)
-
 ```{r}
->>>>>>> 8873f896db0c37c0e2bcfc517791d86b80f206dd
 # Fit the Random Forest model using PC2 scores:
 rf_model_pc2 <- randomForest(
   as.matrix(dtm_1),
