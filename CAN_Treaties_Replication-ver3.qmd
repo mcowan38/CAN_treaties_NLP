@@ -14,6 +14,7 @@ editor: visual
 # Generate KPCA for Time Trends + PCA, Correlations, and Random Forests
 # Load packages:
 library(tidyverse)
+library(readxl)
 library(plotly)
 library(tm)
 library(kernlab)
@@ -355,7 +356,7 @@ inspect(CAN_corp[1:5])
 ```
 
 ```{r load_kpca_results}
-# # Load Data:
+# Load Data:
 load("./00_scripts/01_CAN/CAN_KPC1_douglas.rdata")
 load("./00_scripts/01_CAN/CAN_KPC2_douglas.rdata")
 load("./00_scripts/01_CAN/CAN_KPC10_douglas.rdata")
@@ -371,7 +372,7 @@ load("./00_scripts/01_CAN/CAN_KPC10_douglas.rdata")
 
 -   We had to change up how many Principal Components were being detected so we could get a graph out of this (here we look at 10).
 
-### **Plot (plotly)**
+### **Scree Plot (plotly)**
 
 ```{r scree_plot}
 eigenvalues <- KPC10@eig
@@ -509,12 +510,12 @@ write.csv(
 ```
 
 ```{r positive_word_stems_kpc1}
-terms_info_aggregated_douglas <- read_excel("00_documents/visuals/douglas_adjustment/terms_info_aggregated_douglas.xlsx")
+terms_info_aggregated <- read_excel("00_documents/visuals/terms_info_aggregated.xlsx")
 
 # Correlations - KPC1
 
 ## * Positive ---- 
-kpc1_positive_word_stems <- terms_info_aggregated_douglas %>% 
+kpc1_positive_word_stems <- terms_info_aggregated %>% 
   dplyr::select(12:14) %>% 
   dplyr::rename(Positive_Term = 1, Frequency = 2, Correlation = 3) %>% 
   dplyr::slice(1:39) %>% 
@@ -532,7 +533,7 @@ kpc1_positive_word_stems %>%
 
 ## * Negative ---- 
 
-kpc1_negative_word_stems <- terms_info_aggregated_douglas %>% 
+kpc1_negative_word_stems <- terms_info_aggregated %>% 
   dplyr::select(16:18) %>% 
   dplyr::rename(Negative_Term = 1, Frequency = 2, Correlation = 3) %>% 
   dplyr::slice(1:50) %>% 
@@ -549,7 +550,6 @@ kpc1_negative_word_stems %>%
   footnote(general = "Here is a general comments of the table. ")
 
 ```
-
 
 ### Correlations – PC2 (.csv)
 
@@ -602,7 +602,7 @@ write.csv(
 # Correlations - KPC2
 
 ## * Positive ---- 
-kpc2_pos_word_stems <- terms_info_aggregated_douglas %>% 
+kpc2_pos_word_stems <- terms_info_aggregated %>% 
   dplyr::slice(52:106) %>% 
   dplyr::select(12:14) %>% 
   dplyr::rename(Positive_Term = 1, Frequency = 2, Correlation = 3) %>% 
@@ -620,7 +620,7 @@ kpc2_pos_word_stems %>%
   footnote(general = "Here is a general comments of the table. ")
 
 ## * Negative ---- 
-kpc2_neg_word_stems <- terms_info_aggregated_douglas %>% 
+kpc2_neg_word_stems <- terms_info_aggregated %>% 
   dplyr::slice(52:106) %>% 
   dplyr::select(16:18) %>% 
   dplyr::rename(Positive_Term = 1, Frequency = 2, Correlation = 3) %>% 
@@ -716,7 +716,6 @@ importance_df_pc1 %>%
   scroll_box(width = "500px", height = "500px") %>% 
   footnote(general = "Here is a general comments of the table. ")
 ```
-
 
 ### **XGBoost Model Tuning – PC1:**
 
@@ -848,7 +847,6 @@ importance_df_1 %>%
   scroll_box(width = "500px", height = "500px") %>% 
   footnote(general = "Here is a general comments of the table. ")
 ```
-
 
 ## [**Principal Component 2**]{.underline}
 
@@ -1019,7 +1017,6 @@ importance_df_xgb_2 %>%
   footnote(general = "Here is a general comments of the table. ")
 ```
 
-
 ## [**Visualizations**]{.underline}
 
 ### **RF – Visualize PC1 Feature Importance:**
@@ -1072,7 +1069,6 @@ plot_ly(data = importance_df_pc1[1:35,], x = ~Importance, y = ~Term, type = 'bar
     margin = list(l = 100, r = 100, t = 150, b = 100)) %>% 
   config(displaylogo = FALSE)
 ```
-
 
 ### **RF – Visualize PC2 Feature Importance:**
 
@@ -1221,7 +1217,6 @@ biplot
 # Save the interactive biplot as an HTML file
 saveWidget(biplot, "biplot_canadian_indigenous_treaties.html")
 ```
-
 
 ### **Principal Components Table:**
 
