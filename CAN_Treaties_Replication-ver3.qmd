@@ -404,7 +404,7 @@ plot_ly(
   layout(
     #title = "<b>Scree Plot - KPCA Results</b>\n10 Components",        # Chart title
     title = list(
-      text = paste0("<b>Figure X</b><br><i>KPCA Results - 10 Components</i>"),
+      text = paste0("<b>Figure 1</b><br><i>Eiganvalues for 10 Components</i>"),
       x = 0.1, 
       y = -1,
       xanchor = "left", 
@@ -509,48 +509,6 @@ write.csv(
 )
 ```
 
-```{r positive_word_stems_kpc1}
-terms_info_aggregated <- read_excel("00_documents/visuals/terms_info_aggregated.xlsx")
-
-# Correlations - KPC1
-
-## * Positive ---- 
-kpc1_positive_word_stems <- terms_info_aggregated %>% 
-  dplyr::select(12:14) %>% 
-  dplyr::rename(Positive_Term = 1, Frequency = 2, Correlation = 3) %>% 
-  dplyr::slice(1:39) %>% 
-  data.frame() %>% 
-  dplyr::mutate(Correlation = as.numeric(as.character(Correlation))) %>% 
-  dplyr::arrange(desc(Correlation)) %>% 
-  dplyr::mutate(Correlation = round(x = Correlation, digits = 3))
-
-kpc1_positive_word_stems %>% 
-  kbl(caption = "<b>Table N</b> <br><i>KPC1 - Positive Word Stems</i>", 
-      col.names = c("Positive Term", "Term Frequncy", "Correlation")) %>%
-  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
-  scroll_box(width = "500px", height = "500px") %>% 
-  footnote(general = "Here is a general comments of the table. ")
-
-## * Negative ---- 
-
-kpc1_negative_word_stems <- terms_info_aggregated %>% 
-  dplyr::select(16:18) %>% 
-  dplyr::rename(Negative_Term = 1, Frequency = 2, Correlation = 3) %>% 
-  dplyr::slice(1:50) %>% 
-  data.frame() %>% 
-  dplyr::mutate(Correlation = as.numeric(as.character(Correlation))) %>% 
-  dplyr::arrange(desc(Correlation)) %>% 
-  dplyr::mutate(Correlation = round(x = Correlation, digits = 3))
-
-kpc1_negative_word_stems %>% 
-  kbl(caption = "<b>Table N</b> <br><i>KPC1 - Negative Word Stems</i>",
-      col.names = c("Negative Term", "Term Frequncy", "Correlation")) %>%
-  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
-  scroll_box(width = "500px", height = "500px") %>% 
-  footnote(general = "Here is a general comments of the table. ")
-
-```
-
 ### Correlations – PC2 (.csv)
 
 ```{r compute_pc2}
@@ -597,45 +555,53 @@ write.csv(
 )
 ```
 
-```{r}
+### Correlations Tables – aggregated.csv
 
-# Correlations - KPC2
+```{r correlation_tables}
+# Load the data
+terms_info_aggregated <- read_excel("00_documents/visuals/terms_info_aggregated.xlsx")
 
-## * Positive ---- 
-kpc2_pos_word_stems <- terms_info_aggregated %>% 
-  dplyr::slice(52:106) %>% 
-  dplyr::select(12:14) %>% 
-  dplyr::rename(Positive_Term = 1, Frequency = 2, Correlation = 3) %>% 
-  data.frame() %>% 
-  dplyr::slice(2:55) %>% 
-  dplyr::mutate(Correlation = as.numeric(as.character(Correlation))) %>% 
-  dplyr::arrange(desc(Correlation)) %>% 
-  dplyr::mutate(Correlation = round(x = Correlation, digits = 3))
+# Define specific terms for KPC1 and KPC2 as per user instruction
+kpc1_terms <- c("successor", "receipt", "sell", "parcel", "tract", "unto", "grant", 
+                "indian", "resid", "protect", "govern", "punish", "surrend", "dominion")
 
-kpc2_pos_word_stems %>% 
-  kbl(caption = "<b>Table N</b> <br><i>KPC2 - Positive Word Stems</i>", 
-      col.names = c("Positive Term", "Term Frequncy", "Correlation")) %>%
-  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
-  scroll_box(width = "500px", height = "500px") %>% 
-  footnote(general = "Here is a general comments of the table. ")
+kpc2_terms <- c("father", "children", "great", "white", "thought", "protect", "cultiv", 
+                "pursuant", "commission", "hereinafter", "stipul", "offend", "infring", "negoti")
 
-## * Negative ---- 
-kpc2_neg_word_stems <- terms_info_aggregated %>% 
-  dplyr::slice(52:106) %>% 
-  dplyr::select(16:18) %>% 
-  dplyr::rename(Positive_Term = 1, Frequency = 2, Correlation = 3) %>% 
-  data.frame() %>% 
-  dplyr::slice(2:50) %>% 
-  dplyr::mutate(Correlation = as.numeric(as.character(Correlation))) %>% 
-  dplyr::arrange(desc(Correlation)) %>% 
-  dplyr::mutate(Correlation = round(x = Correlation, digits = 3))
+# Filter and create KPC1 table based on selected terms
+kpc1_df <- terms_info_aggregated %>%
+  filter(Term %in% kpc1_terms) %>%
+  select(Term, Frequency = `Frequency...3`, Correlation = `Correlation...4`) %>%
+  arrange(desc(Correlation))
 
-kpc2_neg_word_stems %>% 
-  kbl(caption = "<b>Table N</b> <br><i>KPC2 - Negative Word Stems</i>", 
-      col.names = c("Positive Term", "Term Frequncy", "Correlation")) %>%
-  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
-  scroll_box(width = "500px", height = "500px") %>% 
-  footnote(general = "Here is a general comments of the table. ")
+# Filter and create KPC2 table based on selected terms
+kpc2_df <- terms_info_aggregated %>%
+  filter(`Term - KPC2` %in% kpc2_terms) %>%
+  select(Term = `Term - KPC2`, Frequency = `Frequency...18`, Correlation = `Correlation...19`) %>%
+  arrange(desc(Correlation))
+
+# Display KPC1 table without scroll box
+kpc1_df %>%
+  kbl(
+    caption = "<b>Table 1</b> <br><i>KPC1 Correlations: Land Transactions vs. Governance Agreements</i>",
+    col.names = c("Term", "Frequency", "Correlation")
+  ) %>%
+  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>%
+  footnote(
+    general = "Terms in KPC1 reflect transactional language and governance, with high correlations for property rights and low correlations for governance themes."
+  )
+
+# Display KPC2 table without scroll box
+kpc2_df %>%
+  kbl(
+    caption = "<b>Table 2</b> <br><i>KPC2 Correlations: Formality and Legal Language</i>",
+    col.names = c("Term", "Frequency", "Correlation")
+  ) %>%
+  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>%
+  footnote(
+    general = "Terms in KPC2 highlight the level of formality and hierarchical legal language, contrasting formal legal discourse with more relational language."
+  )
+
 ```
 
 ## [Random Forest Algorithm]{.underline} (p. 89)
@@ -1033,7 +999,7 @@ plot_ly(data = importance_df_pc1[1:35,], x = ~Importance, y = ~Term, type = 'bar
         ) %>% 
   layout(
     title = list(
-      text = paste0("<b>Figure X</b><br><i>PC1 Model Results - Top 35 Terms</i>"),
+      text = paste0("<b>Figure 3</b><br><i>KPC1 Importance: Top 35 Terms</i>"),
       x = 0.1, 
       y = -1,
       xanchor = "left", 
@@ -1089,7 +1055,7 @@ plot_ly(data =  top_terms_pc2[1:35,], x = ~Importance, y = ~Term, type = 'bar',
 ) %>% 
   layout(
     title = list(
-      text = paste0("<b>Figure X</b><br><i>PC2 RF Model Results - Top 35 Terms</i>"),
+      text = paste0("<b>Figure 4</b><br><i>KPC2 Importance: Top 35 Terms</i>"),
       x = 0.1, 
       y = -1,
       xanchor = "left", 
@@ -1142,32 +1108,7 @@ print(cor_pc2)
 ### **Biplot: KPC1 & KPC2**
 
 ```{r biplot_kpc1_v_kpc2}
-# Load PCA scores
-pca_scores_df <- read_csv("./00_documents/visuals/KPCA_scores_comparison.csv")
-
-# Remove the ".txt" extension from the 'Document' column
-pca_scores_df <- pca_scores_df %>%
-  mutate(Document = str_remove(Document, "\\.txt$"))
-
-# Load treaty metadata
-treaty_metadata <- read_csv("./00_documents/01_CAN_spreadsheets/CAN_universe_cases_douglas.csv")
-
-# Clean and prepare dates
-treaty_metadata <- treaty_metadata %>%
-  mutate(Date = as.Date(str_replace_all(Date, "/", "-"), format = "%Y-%m-%d"))
-
-# Merge PCA scores with metadata based on the Document identifier
-pca_merged_df <- pca_scores_df %>%
-  left_join(treaty_metadata, by = c("Document" = "Treaty ID"))
-
-# Update the 'Treaty' column using case_when to replace values
-pca_merged_df <- pca_merged_df %>%
-  dplyr::mutate(Type = gsub("^The Numbered Treaties.*", "The Numbered Treaties", Type))
-
-# Define your custom color palette as a list of hex codes
-custom_colors <- c("#EF476F", "#F78C6B", "#FFD166", "#83D483", "#06D6A0", "#0CB0A9", "#118AB2", "#073B4C") # Add more colors as needed
-
-# Create and display the interactive biplot
+# Create and display a compact interactive biplot
 biplot <- plot_ly(
   data = pca_merged_df,
   x = ~PC1_Score,
@@ -1175,8 +1116,8 @@ biplot <- plot_ly(
   type = 'scatter',
   mode = 'markers',
   color = ~Type,
-  colors = custom_colors,  # Use custom color palette here
-  marker = list(size = 10, opacity = 0.8, line = list(width = 1, color = '#FFFFFF')),
+  colors = custom_colors,
+  marker = list(size = 7, opacity = 0.7, line = list(width = 0.8, color = '#FFFFFF')),
   text = ~paste(
     "Treaty Name:", `Treaty Name`,
     "<br>Type:", Type,
@@ -1188,33 +1129,33 @@ biplot <- plot_ly(
 ) %>%
   layout(
     title = list(
-      text = paste0(
-        "<b>Figure X</b>
-        <br><i>Biplot of Canadian-Indigenous Treaties</i>"),
+      text = "<b>Figure 2</b><br><i>Biplot of Canadian-Indigenous Treaties</i>",
       x = 0.1, 
       y = -1,
-      xanchor = "left", yanchor = "top", font = list(size = 16)
+      xanchor = "left", yanchor = "top", 
+      font = list(size = 14)
     ),
-    xaxis = list(title = "<b>Principal Component 1 (KPC1)", titlefont = list(size = 14), tickfont = list(size = 12)),
-    yaxis = list(title = "<b>Principal Component 2 (KPC2)", titlefont = list(size = 14), tickfont = list(size = 12)),
-    legend = list(title = list(text = "Treaty Type", font = list(size = 14)), font = list(size = 12)),
-    margin = list(l = 100, r = 100, t = 150, b = 200)
-  ) %>% 
-  add_annotations(
-    text = "<i>Note. High KPC1 indicates a focus on land transactions, property rights, and financial compensation; 
-    low KPC1 emphasizes governance, legal administration, and Indigenous relations.
-    High KPC2 reflects formal legal language with references to the British Crown;
-    low KPC2 denotes practical and informal language.
-    ",
-    x = 0.5,  # Centered horizontally
-    y = -1,  # Position below the graph
-    xref = "paper",
-    yref = "paper",
-    showarrow = FALSE
+    xaxis = list(
+      title = "<b>Principal Component 1 (Topic)</b>", 
+      titlefont = list(size = 12), 
+      tickfont = list(size = 10)
+    ),
+    yaxis = list(
+      title = "<b>Principal Component 2 (Formality)</b>", 
+      titlefont = list(size = 12), 
+      tickfont = list(size = 10)
+    ),
+    legend = list(
+      title = list(text = "<b>Treaty Type</b>", font = list(size = 12)), 
+      font = list(size = 10), 
+      orientation = 'h', # horizontal layout
+      x = 0.5, xanchor = "center", y = -0.3  # position it below the plot
+    ),
+    margin = list(l = 80, r = 80, t = 100, b = 120)
   )
 
 biplot
-# Save the interactive biplot as an HTML file
+# Save the compact interactive biplot as an HTML file
 saveWidget(biplot, "biplot_canadian_indigenous_treaties.html")
 ```
 
@@ -1252,6 +1193,32 @@ summary_table <- pca_merged_df %>%
 
 # Display the table
 summary_table
+```
+
+### **Spirling (2012) Comparison Table:**
+
+```{r}
+# Comparing Canadian (KPC1 & KPC2) vs. U.S. treaties
+treaty_data <- data.frame(
+  Stem = c("friendship", "peace", "mutual", "boundary", "relinquish", "dollar", "tract", "land", "reservation"),
+  US_Correlation = c(0.62, 0.56, 0.49, -0.01, -0.08, -0.10, -0.20, -0.49, -0.49),  # Spirling's U.S. data
+  Canadian_KPC1 = c(-0.51, 0.32, 0.03, -0.04, -0.27, -0.32, 0.52, 0.11, -0.32),   # Example Canadian KPC1 values
+  Canadian_KPC2 = c(0.37, 0.04, 0.14, -0.10, 0.15, -0.49, -0.27, 0.03, -0.50)    # Example Canadian KPC2 values
+)
+
+# Create the table with kableExtra
+treaty_data %>%
+  kbl(
+    caption = "<b>Table 3</b> <br><i>Comparison of Stem Correlation Scores for U.S. and Canadian Treaties</i>",
+    col.names = c("Word", "U.S. Treaties", "Canadian Treaties (KPC1)", "Canadian Treaties (KPC2)"),
+    align = c("l", "c", "c", "c")
+  ) %>%
+  kable_classic(full_width = F, html_font = "Times New Roman") %>%
+  add_header_above(c(" " = 1, "Correlation" = 3)) %>%
+footnote(
+  general = "Ccorrelation scores for selected stems in U.S. treaties (Spirling, 2012) and Canadian treaties (KPC1 and KPC2). Spirling's analysis identified patterns of tonal shifts in U.S. treaties, where positive and negative correlations reflected changes in relational tone over time. In contrast, the Canadian treaty correlations are inconsistent across KPC1 and KPC2, showing no unified pattern that would indicate tonal shifts. This suggests a lack of relational or conflict-driven language dynamics in Canadian treaties, reflecting instead a stable, administrative language that does not respond to historical context in the same way."
+)
+
 ```
 
 ## [**Relevant Sentences Search Function**]{.underline}
