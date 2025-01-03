@@ -32,7 +32,7 @@ This study examines the applicability of Arthur Spirling’s (2012) quantitative
 -	Papillon, Martin. 2020. “Nation to Nation? Canadian Federalism and Indigenous Multi-Level Governance.” In Canadian Federalism: Performance, Effectiveness, and Legitimacy, edited by Herman Bakvis and Grace Skogstad, 395–426. Toronto: University of Toronto Press. https://doi.org/10.3138/9781487570460.
 -	Roberts, Margaret E, Brandon M Stewart, and Richard A Nielsen. 2020. “Adjusting for Confounding with Text Matching.” American Journal of Political Science 64 (4): 887–903. https://doi.org/10.1111/ajps.12526.
 -	Rollo, Toby. 2019. “Imperious Temptations: Democratic Legitimacy and Indigenous Consent in Canada.” Canadian Journal of Political Science 52 (1): 1–19. https://doi.org/10.1017/s0008423918000343.
--	Russell, Peter H. 2017. Canada’s Odyssey : A Country Based on Incomplete Conquests. Toronto: University of Toronto Press.
+-	Russell, Peter H. 2017. Canada’s Odyssey: A Country Based on Incomplete Conquests. Toronto: University of Toronto Press.
 -	Rynard, Paul. 2000. “‘Welcome In, but Check Your Rights at the Door’: The James Bay and Nisga’a Agreements in Canada.” Canadian Journal of Political Science 33 (2): 211–43. https://doi.org/10.1017/s0008423900000081.
 -	Savoie, Donald J. 2019. Democracy in Canada: The Disintegration of Our Institutions. Montreal and Kingston: McGill-Queen’s University Press.
 -	Smith, Linda Tuhiwai . 2012. Decolonizing Methodologies : Research and Indigenous Peoples. London: Zed Books.
