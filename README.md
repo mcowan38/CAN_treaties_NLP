@@ -1,14 +1,14 @@
 ## Cowan, M., Cowie, C., Greenaway, C., & Schnurbusch, P. (2024). *Stagnant Promises: Analyzing treaty dynamics in Canadian-Indigenous relations*. Manuscript in preparation.
-Conceptual replication of Spirling (2012) NLP analysis of American-Indigenous treaties. Paper presented at the 56th annual NPSA Conference, Boston, MA, United States.
-
-## Abstract
-This study examines the applicability of Arthur Spirling’s (2012) quantitative methodology, which identified tonal shifts in U.S.–Indian treaties corresponding to historical events, to the analysis of Canadian-Indigenous treaties. Employing string kernel principal components analysis (KPCA) on a comprehensive corpus of Canadian treaties, we sought to uncover hidden patterns and shifts in treaty language over time. Contrary to findings in the U.S. context, our analysis reveals a linguistic consistency in Canadian treaties over time, with principal components differentiating treaties based on their thematic content rather than a discernible shift in tone corresponding to historical events . This consistency reflects the persistent use of uniform colonial language as a result of colonial administrative practices and the marginalization of Indigenous perspectives within the treaty-making process. Our findings underscore the limitations of text-as-data approaches in contexts where treaties were drafted without significant Indigenous input, and where oral traditions prevail. To address these limitations, we advocate for a pluralistic methodological approach that incorporates Indigenous knowledge systems and frameworks, such as treaty federalism, to achieve a more nuanced understanding of treaty relationships.
+Conceptual replication of Spirling (2012) NLP analysis of American-Indigenous treaties. Paper presented at the 56th annual NPSA Conference, Boston, MA, United States. Accepted for presentation at CPSA 2025.
 
 ## Table of Contents
 - [Abstract](#abstract)
 - [Relevant Literature](#relevant-literature)
 - [Resources for Canadian Digitized Treaties](#resources-for-canadian-digitized-treaties)
 - [Spirling (2012)](#spirling-2012)
+
+## Abstract
+This study examines the applicability of Arthur Spirling’s (2012) quantitative methodology, which identified tonal shifts in U.S.–Indian treaties corresponding to historical events, to the analysis of Canadian-Indigenous treaties. Employing string kernel principal components analysis (KPCA) on a comprehensive corpus of Canadian treaties, we sought to uncover hidden patterns and shifts in treaty language over time. Contrary to findings in the U.S. context, our analysis reveals a linguistic consistency in Canadian treaties over time, with principal components differentiating treaties based on their thematic content rather than a discernible shift in tone corresponding to historical events . This consistency reflects the persistent use of uniform colonial language as a result of colonial administrative practices and the marginalization of Indigenous perspectives within the treaty-making process. Our findings underscore the limitations of text-as-data approaches in contexts where treaties were drafted without significant Indigenous input, and where oral traditions prevail. To address these limitations, we advocate for a pluralistic methodological approach that incorporates Indigenous knowledge systems and frameworks, such as treaty federalism, to achieve a more nuanced understanding of treaty relationships.
 
 ## Relevant Literature
 -	Ajzenstat, Janet, Paul Romney, Ian Gentles, and William Gairdner, eds. 2003. Canada’s Founding Debates. University of Toronto Press. https://doi.org/10.3138/9781442671713.
