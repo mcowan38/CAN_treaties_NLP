@@ -1,4 +1,4 @@
-## Cowan, M., Cowie, C., Greenaway, C., & Schnurbusch, P. (2024). *Stagnant Promises: Analyzing treaty dynamics in Canadian-Indigenous relations*. Working paper.
+## Cowan, M., Cowie, C., Greenaway, C., & Schnurbusch, P. (2024). *Stagnant Promises: Analyzing treaty dynamics in Canadian-Indigenous relations*. Manuscript in preparation.
 Conceptual replication of Spirling (2012) NLP analysis of American-Indigenous treaties. Paper presented at the 56th annual NPSA Conference, Boston, MA, United States.
 
 ## Abstract
@@ -6,7 +6,7 @@ This study examines the applicability of Arthur Spirling’s (2012) quantitative
 
 ## Table of Contents
 - [Abstract](#abstract)
-- [Preliminary Literature Review](#preliminary-literature-review)
+- [Relevant Literature](#relevant-literature)
 - [Resources for Canadian Digitized Treaties](#resources-for-canadian-digitized-treaties)
 - [Spirling (2012)](#spirling-2012)
 
