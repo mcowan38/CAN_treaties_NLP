@@ -37,3 +37,5 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 01_eda.html
+"methods/" 
+"articles/" 
