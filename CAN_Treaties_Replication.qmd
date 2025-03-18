@@ -20,7 +20,6 @@ library(tm)
 library(kernlab)
 library(SnowballC) # for Similarity Matrix calculations
 library(randomForest)
-library(xgboost)
 library(caret)
 library(stringr)
 library(kableExtra)
@@ -131,7 +130,7 @@ treatiesWT <-
 
 -   Here, **FULL_corp** becomes our original, unaltered corpus database for KPCA and search functionality.
 -   **CAN_corp** is used for analysis.
-    -   **Note:** here is where we can think about removing treaty-sets collectively (e.g., the Douglas Treaties – treatiesDT).
+    -   **Note:** here is where we thought about aggregating the Douglas Treaties (treatiesDT).
 
 ```{r create_text_corpora, include=FALSE}
 # seed for reproducibility:
@@ -197,29 +196,23 @@ inspect(CAN_corp[1:5])
 
 ### 1. Minimal Preprocessing
 
--   **Preserve Character of Text**: For string kernels, it's beneficial to retain the original character of the text as much as possible.
+-   **Preserve Character of Text**: For string kernels, we retain the original character of the text as much as possible.
 
-    -   This includes maintaining the original casing, punctuation, and possibly even misspellings or idiosyncrasies in the text.
-
-    -   These elements can contribute to the distinctive substrings (consecutive characters) that the kernel will analyze.
+    -   This includes maintaining the original casing, punctuation, and possibly even misspellings or idiosyncrasies in the text – elements contributing to the distinctive substrings (consecutive characters) that the kernel will analyze.
 
 ### 2. Avoid Stemming
 
 -   **Retain Word Forms**: Stemming reduces words to their root forms, which can diminish the lexical diversity that a string kernel might exploit to identify subtle textual similarities or differences.
 
-    -   Avoid stemming unless it's necessary for other parts of your analysis where you need normalized word forms.
+    -   Avoid stemming unless it's necessary.
 
 ### 3. Cleaning Specifics
 
--   **Remove Non-textual Elements**: Clean the text from non-textual elements such as URLs, email addresses, or any metadata that might skew the analysis.
+-   **Remove Non-textual Elements**: Clean the text from non-textual elements (e.g., URLs, email addresses, or any metadata).
 
--   **Unicode Normalization**: If working with diverse languages or fonts, normalize text to a consistent Unicode format to avoid discrepancies due to encoding variations.
+-   **Unicode Normalization**: Normalize text to a consistent Unicode format to avoid discrepancies due to encoding variations.
 
-### 4. Language-Specific Stopwords
-
--   **Selective Use of Stopwords**: While Spirling might suggest keeping most of the text intact, removing extremely common stopwords could still be beneficial to reduce noise in the data. However, this should be done selectively to avoid losing meaningful textual context.
-
-### 5. Handling Special Characters
+### 4. Handling Special Characters
 
 -   **Special Characters and Punctuation**: In some cases, especially when analyzing legal or formal texts, punctuation such as commas, semicolons, or quotation marks could carry semantic weight.
     -   Decide based on the content type whether to retain these elements.
@@ -236,15 +229,13 @@ inspect(CAN_corp[1:5])
 
     1.  **Dealing with Non-Linearity**: Traditional PCA works well with linear relationships, but many real-world data sets – including textual data – exhibit non-linear structures.
 
-        -   KPCA uses kernel functions to project your data into a higher-dimensional space where these non-linear relationships can be linearly separated – potentially uncovering patterns PCA can miss.
+        -   KPCA uses kernel functions to project data into a higher-dimensional space where these non-linear relationships can be linearly separated – potentially uncovering patterns PCA can miss.
 
     2.  **Major Patterns**: KPCA aims to identify the underlying patterns or trends in the treaty texts – such as themes or recurring issues – by transforming the text data into principal components – new variables that represent significant underlying trends in the data.
 
     3.  **Reduction and Visualization**: KPCA reduces the complexity of the data, making it easier to analyze and visualize.
 
-        -   e.g., You might use it to see which themes are most prevalent across different treaties or to understand how certain concepts or topics cluster together.
-
-    4.  **Analysis**: The kernel trick allows you to handle text data – typically hard to manage with linear methods – by measuring similarities (or distances) based on the treaties' language and content.
+    4.  **Analysis**: The kernel trick allows us to handle text data – typically hard to manage with linear methods – by measuring similarities (or distances) based on the treaties' language and content.
 
 ## [Similarity Matrix]{.underline}
 
@@ -464,7 +455,7 @@ write.csv(
 
 ### Correlations – PC1 (.csv)
 
--   Clarify if detrended stuff needs to come from KPCA or from the TDM PC1.
+-   Clarify if detrended comes from KPCA or from the TDM PC1.
 
 ```{r get_correlations}
 # Convert DTM to matrix and get term frequencies:
@@ -608,21 +599,9 @@ kpc2_df %>%
 
 **Why use both approaches** (1. KPCA & 2. PCA via TDM with Cor & RF)?
 
--   **Complementarity**: Kernel PCA and traditional PCA serve complementary roles. Kernel PCA can capture nonlinear relationships in high-dimensional data, making it suitable for complex text data structures. However, its results might be more abstract and harder to interpret directly in terms of original features (words). On the other hand, traditional PCA with a TDM provides a more interpretable model, as it directly relates to the terms used across the documents.
+-   **Complementarity**: Kernel PCA and traditional PCA serve complementary roles. Kernel PCA can capture nonlinear relationships in high-dimensional data, making it suitable for complex text data structures – though the results might be more abstract and harder to interpret directly in terms of original features (words). On the other hand, traditional PCA with a TDM provides a more interpretable model, as it directly relates to the terms used across the documents (Spirling 2012).
 
--   **Interpretability and Validation**: Using a TDM and traditional PCA might be intended to validate or supplement the insights gained from the kernel PCA. It offers a more straightforward, interpretable view, directly linking principal components to specific words or terms.
-
--   **Methodological Rigor**: Employing two methodologies can provide a robustness check, ensuring that findings are not artifacts of a particular method but are consistently observable across different analytical approaches.
-
-### Considerations
-
--   **Objective Alignment**: Ensure that the analysis method aligns with your research objectives. Kernel PCA might be more suitable if the focus is on uncovering complex patterns and relationships, while traditional PCA is better for direct term importance and variability analysis.
-
--   **Data Preparation**: For both methods, data preparation is crucial. Ensure that the text is appropriately preprocessed (stemming, stop-word removal, etc.) and that the data subsets used in each analysis are correctly aligned.
-
--   **Model Interpretation**: Be clear about what each model tells you about the data. Kernel PCA results might require more sophisticated interpretation techniques, whereas traditional PCA results can often be directly interpreted by examining the loadings of principal components.
-
-### **Fit & Details**
+**Fit & Details**
 
 -   **Individual Tree Predictions**: Each tree in the Random Forest makes predictions based on a subset of the data and a subset of the features (terms). These subsets are randomly selected, ensuring that each tree develops a unique perspective based on different portions of the dataset and different sets of terms.
 -   **Error Estimation**: When a tree is grown, it doesn't use all the available features. This allows for something called "out-of-bag" error estimation, where the data not used in training a particular tree (out-of-bag data) are used to test the tree. This process estimates how each feature (term) impacts the prediction error. For each tree, the error increase when a feature is omitted (by permuting the feature values) indicates the importance of that feature.
@@ -683,137 +662,6 @@ importance_df_pc1 %>%
   footnote(general = "Here is a general comments of the table. ")
 ```
 
-### **XGBoost Model Tuning – PC1:**
-
-```{r xgb_pc1}
-# Convert term-document matrix to matrix format
-# dtm_matrix <- as.matrix(dtm_1)
-
-# Convert the response variable to a numeric vector
-# response_vector <- as.numeric(pc1_scores)
-
-# Create an xgb.DMatrix object
-# dtrain <- xgb.DMatrix(data = dtm_matrix, label = response_vector)
-
-# param_grid <- expand.grid(
-#   max_depth = c(4, 6, 8),
-#   eta = c(0.01, 0.1, 0.3),
-#   gamma = c(0, 0.1, 0.2),
-#   colsample_bytree = c(0.6, 0.8, 1),
-#   min_child_weight = c(1, 3, 5),
-#   subsample = c(0.6, 0.8, 1),
-#   nrounds = c(100, 200, 500)
-# )
-
-# Create cross-validation folds
-# set.seed(123)
-# cv_folds <- createFolds(response_vector, k = 3, list = TRUE)
-
-# Function to run cross-validation and return RMSE
-# cv_rmse <- function(params) {
-#   cv <- xgb.cv(
-#     params = params,
-#     data = dtrain,
-#     nrounds = params$nrounds,
-#     folds = cv_folds,
-#     metrics = "rmse",
-#     verbose = FALSE
-#   )
-#   return(min(cv$evaluation_log$test_rmse_mean))
-# }
-# best_params <- NULL
-# best_rmse <- Inf
-
-# for (i in 1:nrow(param_grid)) {
-#   params <- as.list(param_grid[i,])
-#   params$objective <- "reg:squarederror"
-
-#   rmse <- cv_rmse(params)
-
-#   if (rmse < best_rmse) {
-#     best_rmse <- rmse
-#     best_params <- params
-#   }
-
-#   print(paste("Completed iteration", i, "with RMSE:", rmse))
-# }
-
-# print(best_params)
-# print(paste("Best RMSE:", best_rmse))
-
-# final_model <- xgb.train(
-#   params = best_params,
-#   data = dtrain,
-#   nrounds = best_params$nrounds
-# )
-
-# Make predictions (using iteration_range)
-# preds <- predict(final_model, dtrain, iteration_range = c(1, best_params$nrounds))
-```
-
-### **XGBoost Model – PC1:**
-
-```{r xgb, eval = FALSE}
-# Convert term-document matrix to matrix format
-dtm_matrix_1 <- as.matrix(dtm_1)
-
-# Convert the response variable to a numeric vector
-response_vector_1 <- as.numeric(pc1_scores)
-
-# Create an xgb.DMatrix object
-dtrain_1 <- xgb.DMatrix(data = dtm_matrix_1, label = response_vector_1)
-
-# Set parameters for the XGBoost model
-params_1 <- list(
-  objective = "reg:squarederror",
-  max_depth = 5,     # Reduced from  to limit tree depth
-  eta = 0.1,         # Changed from 0.3 to 0.1
-  nthread = 2,
-  eval_metric = "rmse",
-  alpha = 1,         # L1 regularization term
-  lambda = 1         # L2 regularization term
-)
-
-xgb_model_1 <- xgb.train(
-  params = params_1,
-  data = dtrain_1,
-  nrounds = 100       # Changed from 2000 to 100
-)
-
-# Get feature importance scores
-importance_scores_1 <- xgb.importance(feature_names = colnames(dtm_matrix_1), model = xgb_model_1)
-
-# Convert to a data frame
-importance_df_1 <- as.data.frame(importance_scores_1)
-
-# Sort the terms by decreasing importance
-importance_df_1 <- importance_df_1[order(-importance_df_1$Gain), ]
-
-# Display the top important terms
-top_terms_1 <- head(importance_df_1, 35)
-print(top_terms_1)
-
-# Optionally, output results to .csv file:
-write.csv(
-  importance_df_1,
-  "./00_documents/visuals/term_importance_xgboost_PC1.csv",
-  row.names = FALSE
-)
-```
-
-```{r import_term_importance_xgboost_pc1}
-importance_df_1 <- read.csv(  "./00_documents/visuals/term_importance_xgboost_PC1.csv")
-```
-
-```{r}
-importance_df_1 %>% 
-  dplyr::mutate(across(c(Gain, Cover, Frequency), ~ round(.x, 3))) %>% 
-  kbl(caption = "<b>Table N</b> <br><i>PC1 XGB Scores</i>") %>%
-  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
-  scroll_box(width = "500px", height = "500px") %>% 
-  footnote(general = "Here is a general comments of the table. ")
-```
-
 ## [**Principal Component 2**]{.underline}
 
 ### **Basic Random Forest Model – PC2:**
@@ -852,135 +700,6 @@ write.csv(
   "./00_documents/visuals/term_importance_PC2.csv",
   row.names = FALSE
 )
-```
-
-### **XGBoost Model Tuning – PC2:**
-
-```{r xgb_tuning_pc2}
-# Convert term-document matrix to matrix format
-# dtm_matrix <- as.matrix(dtm_1)
-
-# Convert the response variable to a numeric vector
-# response_vector <- as.numeric(pc2_scores)
-
-# Create an xgb.DMatrix object
-# dtrain <- xgb.DMatrix(data = dtm_matrix, label = response_vector)
-
-# param_grid <- expand.grid(
-#   max_depth = c(4, 6, 8),
-#   eta = c(0.01, 0.1, 0.3),
-#   gamma = c(0, 0.1, 0.2),
-#   colsample_bytree = c(0.6, 0.8, 1),
-#   min_child_weight = c(1, 3, 5),
-#   subsample = c(0.6, 0.8, 1),
-#   nrounds = c(100, 200, 500)
-# )
-
-# Create cross-validation folds
-# set.seed(123)
-# cv_folds <- createFolds(response_vector, k = 3, list = TRUE)
-
-# Function to run cross-validation and return RMSE
-# cv_rmse <- function(params) {
-#   cv <- xgb.cv(
-#     params = params,
-#     data = dtrain,
-#     nrounds = params$nrounds,
-#     folds = cv_folds,
-#     metrics = "rmse",
-#     verbose = FALSE
-#   )
-#   return(min(cv$evaluation_log$test_rmse_mean))
-# }
-# best_params <- NULL
-# best_rmse <- Inf
-
-# for (i in 1:nrow(param_grid)) {
-#   params <- as.list(param_grid[i,])
-#   params$objective <- "reg:squarederror"
-  
-#   rmse <- cv_rmse(params)
-  
-#   if (rmse < best_rmse) {
-#     best_rmse <- rmse
-#     best_params <- params
-#   }
-  
-#   print(paste("Completed iteration", i, "with RMSE:", rmse))
-# }
-
-# print(best_params)
-# print(paste("Best RMSE:", best_rmse))
-
-# final_model <- xgb.train(
-#   params = best_params,
-#   data = dtrain,
-#   nrounds = best_params$nrounds
-# )
-
-# Make predictions (using iteration_range)
-# preds <- predict(final_model, dtrain, iteration_range = c(1, best_params$nrounds))
-# preds
-```
-
-### **XGBoost Model – PC2:**
-
-```{r xgb_pc2}
-# Convert term-document matrix to matrix format
-dtm_matrix_2 <- as.matrix(dtm_1)
-
-# Convert the response variable to a numeric vector
-response_vector_2 <- as.numeric(pc2_scores)
-
-# Create an xgb.DMatrix object
-dtrain_2 <- xgb.DMatrix(data = dtm_matrix_2, label = response_vector_2)
-
-# Set parameters for the XGBoost model
-params_2 <- list(
-  objective = "reg:squarederror",
-  max_depth = 5,     # Reduced from  to limit tree depth
-  eta = 0.1,         # Changed from 0.3 to 0.1
-  nthread = 2,
-  eval_metric = "rmse",
-  alpha = 1,         # L1 regularization term
-  lambda = 1         # L2 regularization term
-)
-
-# Train the XGBoost model
-xgb_model_2 <- xgb.train(
-  params = params_2,
-  data = dtrain_2,
-  nrounds = 100 # Number of boosting rounds
-)
-
-# Get feature importance scores
-importance_scores_xgb2 <- xgb.importance(feature_names = colnames(dtm_matrix_2), model = xgb_model_2)
-
-# Convert to a data frame
-importance_df_xgb_2 <- as.data.frame(importance_scores_xgb2)
-
-# Sort the terms by decreasing importance
-importance_df_xgb_2 <- importance_df_xgb_2[order(-importance_df_xgb_2$Gain), ]
-
-# Display the top important terms
-top_terms_xgb_2 <- head(importance_df_xgb_2, 35)
-print(top_terms_xgb_2)
-
-# Optionally, output results to .csv file:
-write.csv(
-  importance_df_xgb_2,
-  "./00_documents/visuals/term_importance_xgboost_PC2.csv",
-  row.names = FALSE
-)
-```
-
-```{r}
-importance_df_xgb_2 %>% 
-  dplyr::mutate(across(c(Gain, Cover, Frequency), ~ round(.x, 3))) %>% 
-  kbl(caption = "<b>Table N</b> <br><i>PC2 XGB Scores</i>") %>%
-  kable_classic(full_width = F, html_font = "Times New Roman", lightable_options = "striped") %>% 
-  scroll_box(width = "500px", height = "500px") %>% 
-  footnote(general = "Here is a general comments of the table. ")
 ```
 
 ## [**Visualizations**]{.underline}
@@ -1216,7 +935,7 @@ treaty_data %>%
   kable_classic(full_width = F, html_font = "Times New Roman") %>%
   add_header_above(c(" " = 1, "Correlation" = 3)) %>%
 footnote(
-  general = "Ccorrelation scores for selected stems in U.S. treaties (Spirling, 2012) and Canadian treaties (KPC1 and KPC2). Spirling's analysis identified patterns of tonal shifts in U.S. treaties, where positive and negative correlations reflected changes in relational tone over time. In contrast, the Canadian treaty correlations are inconsistent across KPC1 and KPC2, showing no unified pattern that would indicate tonal shifts. This suggests a lack of relational or conflict-driven language dynamics in Canadian treaties, reflecting instead a stable, administrative language that does not respond to historical context in the same way."
+  general = "Correlation scores for selected stems in U.S. treaties (Spirling, 2012) and Canadian treaties (KPC1 and KPC2). Spirling's analysis identified patterns of tonal shifts in U.S. treaties, where positive and negative correlations reflected changes in relational tone over time. In contrast, the Canadian treaty correlations are inconsistent across KPC1 and KPC2, showing no unified pattern that would indicate tonal shifts. This suggests a lack of relational or conflict-driven language dynamics in Canadian treaties, reflecting instead a stable, administrative language that does not respond to historical context in the same way."
 )
 
 ```
