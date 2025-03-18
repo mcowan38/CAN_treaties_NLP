@@ -11,6 +11,9 @@
 ## Abstract
 This study tests the applicability of Arthur Spirling’s (2012) quantitative approach—which identified tonal shifts in U.S.–Indian treaties—to Canadian-Indigenous treaties. Using natural language processing and string kernel principal components analysis on a comprehensive corpus, we find linguistic consistency in Canadian treaty-making language over time, contrary to the U.S. context. Principal components differentiate treaties by thematic content rather than shifts corresponding to historical events, reflecting persistent colonial language stemming from administrative practices and the marginalization of Indigenous voices. We advocate for a pluralistic methodological approach that incorporates Indigenous knowledge systems and frameworks, such as treaty federalism, to achieve a more nuanced understanding of treaty relationships.
 
+## Thesis Poster
+![image](https://github.com/mcowan38/CAN_treaties_NLP/blob/main/Cowan%2C%20M.%2C%20Cowie%2C%20C.%2C%20Greenaway%20C.%2C%20%26%20Schnurbusch%2C%20P.%20(n.d.)%2C%20Stagnant%20Promises%20-%20Poster.pdf)
+
 ## Relevant Literature
 -	Ajzenstat, Janet, Paul Romney, Ian Gentles, and William Gairdner, eds. 2003. Canada’s Founding Debates. University of Toronto Press. https://doi.org/10.3138/9781442671713.
 -	Asch, Michael. 2014. On Being Here to Stay: Treaties and Aboriginal Rights in Canada. Toronto: University of Toronto Press.
